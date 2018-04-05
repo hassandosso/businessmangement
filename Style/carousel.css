@@ -1,0 +1,55 @@
+/*html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: #f9f9f3;
+       
+}
+body * {
+	font-family: Arial, Geneva, SunSans-Regular, sans-serif;
+	font-size: 14px;
+	color: #222;
+	line-height: 20px;
+        
+}*/
+
+#wrapper {
+	height: 100%;
+	width: 100%;
+	min-height: 650px;
+	min-width: 900px;
+	padding-top: 1px;
+}
+#slider {
+	margin: 100px 0 0 0;
+	height: 500px;
+	overflow: hidden;
+	background: url(img/ajax-loader.gif) center center no-repeat;
+}
+ 
+#slider .slide {
+	position: relative;
+	display: none;
+	height: 500px;
+	float: left;
+	background-position: center right;
+	cursor: pointer;
+	border-left: 1px solid #fff;
+}
+ 
+#slider .slide:first-child {
+	border: none;
+}
+ 
+#slider .slide.active {
+	cursor: default;
+}
+
+body * {
+	font-family: Arial, Geneva, SunSans-Regular, sans-serif;
+	font-size: 14px;
+/*	color: #222;*/
+	line-height: 20px;
+}
