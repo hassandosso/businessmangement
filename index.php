@@ -2,8 +2,10 @@
 <?php 
  session_start();
  include 'connection/db_connection.php';
- include 'Includes_action_client_server/registration.php';
-// include 'Includes_action_client_server/logout.php';
+ include 'Includes_action_client_server/login.php';
+ include 'Includes_action_client_server/insertdata.php';
+  
+
  
 ?>
 <html>
@@ -16,8 +18,13 @@
         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        
+        
         <link rel="stylesheet" href="Style/indexstyle.css">
         <link rel="stylesheet" href="Style/indexModalStyle.css">
+       
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top barnav">
@@ -26,8 +33,8 @@
         <div class="container-fluid afternav">
          <h3 class="card-title text-danger text-right mb-5 mt-4"><?php if(isset($_SESSION['user'])){echo "{$_SESSION['user']}";} ?></h3>
         
-        <div class="row">
-            <section class="col-xs-3">
+        <div class="row col-md-12">
+<!--            <section class="col-xs-3">-->
 <!--                 The Modal -->
                 <div id="myModal-login" class="modal"><!--
 
@@ -52,8 +59,16 @@
 <!--                   Modal content -->
                     <?php include 'includes/newstock.php'; ?>
                 </div>
+                <div id="myModal-modif" class="modal">
+
+                  <?php // include 'Includes/actionslist.php';?>
+                  
+                </div>
                 
-            </section>
+            <!--</section>-->
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="margin-left: auto; margin-right: auto" ><?php  include 'Includes/CategoryList.php'; ?></div>
+            
         </div>
     </div>
      
@@ -63,9 +78,24 @@
         <script type="text/javascript"
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
-        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
         <script src="JavaScript/loginpage.js"></script>
-<!--        <script src="JavaScript/signup_signin.js"></script>-->
+        <script src="JavaScript/CategoryList.js"></script>
+        <script>
+            $(document).ready(function(){
+                var id = document.getElementById("myModal-modif");
+            id.modal("show");
+                
+            })
+           
+        </script>
+<!--        <script src="JavaScript/actionList.js"></script>
+        -->
+        
+
+
        
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </html>

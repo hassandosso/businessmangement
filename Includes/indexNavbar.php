@@ -10,7 +10,7 @@
                                         <ul class="dropdown-menu undermenu">
                                             <li><button id="addcategory" class="btn btn-danger btn-block">Add Category</button></li>
                                             <li><button id="additem" class="btn btn-danger btn-block">Add Item</button></li>
-                                            <li><button id="listitems" class="btn btn-danger btn-block">List Items</button></li>
+                                            <li><a href="index.php?category=category" id="listitems" class="btn btn-danger btn-block">List Items</a></li>
                                         </ul>
                          </li>
                         <li class="dropdown">

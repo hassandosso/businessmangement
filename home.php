@@ -2,7 +2,7 @@
 <?php
 session_start();
 include 'connection/db_connection.php';
-include 'Includes_action_client_server/registration.php';
+include 'Includes_action_client_server/login.php';
 //include 'Includes_action_client_server/logout.php';
 
 ?>
@@ -53,10 +53,13 @@ include 'Includes_action_client_server/registration.php';
         <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.2.1/jquery.carouFredSel.packed.js">
         </script>
-        
+        <script type="text/javascript"
+            src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
+        </script>
         <script src="JavaScript/signup_signin.js"></script>
         <script src="JavaScript/carousel.js"></script>
-<!--        <script src="JavaScript/createAccount.js"></script>-->
+        <script src="JavaScript/fieldValidation.js"></script>
+        <script src="JavaScript/createAccount.js"></script>
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </html>
 

@@ -75,5 +75,7 @@
             
         </script>
     <script src="JavaScript/signup_signin.js"></script>
+    <script src="JavaScript/fieldValidation.js"></script>
+    <script src="JavaScript/createAccount.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </html>

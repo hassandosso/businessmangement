@@ -14,5 +14,10 @@
                         <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>';
                     }
+                    else{
+                        echo '<ul class="nav navbar-nav navbar-right">
+                        <li><a href="Includes_action_client_server/logout.php" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>';
+                    }
                     ?>
             </div>

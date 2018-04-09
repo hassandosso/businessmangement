@@ -26,16 +26,16 @@
                   <div class="modal-content">
                       <span class="close01">&times;</span>
                     <h3 class="card-title text-primary text-left mb-5 mt-4">Sign up</h3>
-                     <h3 id="error"></h3>
+                     <div id="error"></div>
                     <div class="form-group">
-                        <input type="text" name="fullname" class="form-control" placeholder="Full name">
-                        <input type="text" name="username" class="form-control" placeholder="Username" >
-                        <input type="text" name="company" class="form-control" placeholder="company name">
-                        <input type="email" name="email" class="form-control" placeholder="Enter a valid email">
-                        <input type="text" name="mobile" class="form-control" placeholder="mobile number (ex. +country_code number)">
-                        <input type="text" name="phone" class="form-control" placeholder="Phone number">
-                        <input type="password" name="password" class="form-control" placeholder="Enter Password">
-                        <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm password">
+                        <input type="text" name="fullname" class="form-control" placeholder="Full name" id="fullname" required="required">
+                        <input type="text" name="username" class="form-control" placeholder="Username" id="username" required="required">
+                        <input type="text" name="company" class="form-control" placeholder="company name" id="company" required="required">
+                        <input type="email" name="email" class="form-control" placeholder="Enter a valid email" id="email" required="required">
+                        <input type="text" name="mobile" class="form-control" placeholder="mobile number (ex. +country_code number)" id="mobile" required="required">
+                        <input type="text" name="phone" class="form-control" placeholder="Phone number" id="phone">
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password" id="password" required="required">
+                        <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm password" id="confirmpassword" required="required">
                     </div>  
                 <div class="text-center form-inline">
                   <input type="submit" name="save" class=" form-control btn btn-primary" value="Sign up" id="btn-submit">

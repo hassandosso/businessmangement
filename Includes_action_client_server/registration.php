@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_POST['save']))
-{
-     global  $conn;
+//if(isset($_POST['save']))
+//{
+    include '../connection/db_connection.php';
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -67,59 +67,58 @@ if(isset($_POST['save']))
     
     
     
+    $checkUsername = "SELECT * FROM clients_account WHERE username='$username'";
+    $checkCompany= "SELECT * FROM clients_account WHERE company='$company'";
+    $checkEmail = "SELECT * FROM clients_account WHERE email='$email'";
+    $checkMobile = "SELECT * FROM clients_account WHERE mobile='$mobile'";
     
+    $getUsername = mysqli_fetch_array(mysqli_query($conn, $checkUsername));
+    $getCompany = mysqli_fetch_array(mysqli_query($conn, $checkCompany));
+    $getEmail = mysqli_fetch_array(mysqli_query($conn, $checkEmail));
+    $getMobile = mysqli_fetch_array(mysqli_query($conn, $checkMobile));
     
     $Insert_user = "INSERT INTO clients_account VALUES('$fullname', '$username', '$passwordencrypted', '$company', '$email', '$mobile', '$phone')";
-    $result_user = mysqli_query($conn, $Insert_user);
     
-    if(!$result_user){
-       
-      $error = (mysqli_error($conn));
-      if(preg_match("/duplicate entry/i", $error)){
-          echo '<script>alert("Username or email or mobile or Company name already exist")</script>';
-      }
+    if($getUsername>0){
+        echo "username already exist";
     }
-   else{
-       //CREATION OF USER TABLE
-       
-    /* $result_category = mysqli_query($conn, $create_category);
-       $result_item = mysqli_query($conn, $create_item);
-       $result_stock = mysqli_query($conn, $create_stock);
-       $result_billing = mysqli_query($conn, $create_billing);
-       $result_billcode = mysqli_query($conn, $create_billcode);
-       $result_customer = mysqli_query($conn, $create_customer);
-        */
-//      if(!$result_billing)
-//      {die(mysqli_error($conn));}
-       
-       echo '<script>alert("your account has been created successfuly\nClick on login to access your profile")</script>';
-       header("location: home.php");
+    else if($getCompany>0){
+        echo 'company name already exist';
+    }
+    else if($getEmail>0){
+        echo 'email already exist';
+    }
+    else if($getMobile>0){
+        echo 'mobile number already exist';
+    }
+ else {
+        $result_user = mysqli_query($conn, $Insert_user);
+
+            if(!$result_user){
+                
+
+              $error = (mysqli_error($conn));
+              if(preg_match("/duplicate entry/i", $error)){
+                  echo 1;
+              }
+            }
+           else{
+               //CREATION OF USER TABLE
+
+               $result_category = mysqli_query($conn, $create_category);
+               $result_item = mysqli_query($conn, $create_item);
+               $result_stock = mysqli_query($conn, $create_stock);
+               $result_billing = mysqli_query($conn, $create_billing);
+               $result_billcode = mysqli_query($conn, $create_billcode);
+               $result_customer = mysqli_query($conn, $create_customer);
+                
+        //      if(!$result_billing)
+        //      {die(mysqli_error($conn));}
+
+               echo 'Account creates with success! click on login to acces you profile';
+        //       header("location: home.php");
+           }
    }
     
-}
-if(isset($_POST['login'])){
-    
-    $login_username = $_POST['username'];
-    $login_password = $_POST['password'];
-    
-    $passwordencrypted   = password_hash( $login_password, PASSWORD_BCRYPT, array('cost' => 11));
-    
-    $usercheck = "SELECT username,company FROM clients_account WHERE username='$login_username' and password='$login_password'";
-    $resultcheck = mysqli_query($conn, $usercheck);
-    if($usercheck)
-        
-    {
-        $getuser = mysqli_fetch_array($resultcheck);
-        if($getuser>0){
-            $_SESSION['user'] = $getuser['username'];
-            $_SESSION['company'] = $getuser['company'];
-            header("location: index.php");
-        }
-        else{
-            echo '<script>alert("Wrong username or password")</script>';
-        }
-    }
-    else{
-        die(mysqli_error($conn));
-    }
-}
+//}
+

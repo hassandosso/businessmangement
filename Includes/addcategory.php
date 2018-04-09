@@ -1,4 +1,4 @@
-<form>
+<form method="post">
     <div class="form-group modal-content">
         <span class="close1">&times;</span>
         <h3 class="card-title text-primary text-left mb-5 mt-4">Add category</h3> 
