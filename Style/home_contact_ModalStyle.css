@@ -29,7 +29,10 @@
 .user{
     margin-bottom: 15px;
 }
-
+.modal-content .radio{
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
 
 
 /* The Close Button */

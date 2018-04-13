@@ -20,16 +20,7 @@ if($resultModif){
     
 </form>';
 }
-?>
- <script>
-            $(document).ready(function(){
-                var id = document.getElementById("myModal-modif");
-            id.modal("show");
-                
-            })
-           
-        </script>
-<?php
+
 }
 else{
     die(mysqli_error($conn));

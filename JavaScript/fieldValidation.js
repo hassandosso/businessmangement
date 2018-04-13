@@ -1,5 +1,6 @@
 $(document).ready(function()
 { 
+//    CHECK PASSWORD AND CONFIRM PASSWORD
     $("#confirmpassword").blur(function(){
          $('h2').remove();
         var confirmpassword = $("#confirmpassword").val();
@@ -26,7 +27,7 @@ $(document).ready(function()
        
     
     });
-    
+//    CHECK IF MOBILE NUMBER IS ONLY NUMERIC
     $("#mobile").blur(function(){
          $('h2').remove();
         var mobile = parseInt($("#mobile").val());
@@ -50,6 +51,24 @@ $(document).ready(function()
              $("#btn-submit").prop('disabled',false);
         }
     });
+    
+//    CONTROLE ADMIN AND SUBUSER OF ACCOUNT
+$(".radio").click(function(){
+  var  isSelected = $('input:radio[name=useroption]:checked').val();
+  var element = "<span class='input-group-addon removable'><i class='glyphicon glyphicon-user removable'></i></span>\
+                                <input type='text' name='subuser' class='form-control p_input removable' placeholder='Sub user'>";
+    if(isSelected == "subuser" ){
+        $("#subusername").append(element);
+        $("#subusername").addClass('user')
+    }
+    
+    else if(isSelected == "admin" ){
+        $(".removable").remove();
+        $("#subusername").removeClass('user');
+    }
+    
+});
+
     
    });
 

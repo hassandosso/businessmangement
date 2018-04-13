@@ -4,6 +4,7 @@
  include 'connection/db_connection.php';
  include 'Includes_action_client_server/login.php';
  include 'Includes_action_client_server/insertdata.php';
+ include 'Includes_action_client_server/createuseraccount.php';
   
 
  
@@ -31,40 +32,45 @@
             <?php include 'includes/indexNavbar.php'; ?>
         </nav>
         <div class="container-fluid afternav">
-         <h3 class="card-title text-danger text-right mb-5 mt-4"><?php if(isset($_SESSION['user'])){echo "{$_SESSION['user']}";} ?></h3>
         
         <div class="row col-md-12">
 <!--            <section class="col-xs-3">-->
 <!--                 The Modal -->
-                <div id="myModal-login" class="modal"><!--
-
-                   Modal content 
-                    <?php include 'includes/loginpage.php'; ?>
+               <!--
+-->                <div id="myModal-login" class="modal"><!--
+               
+                   Modal content <!--
+                   
+                    <?php include 'Includes/loginpage.php'; ?>
 -->                </div><!--
                 -->
                 <div id="myModal-category" class="modal" >
 
 <!--                   Modal content -->
-                    <?php include 'includes/addcategory.php'; ?>
+                    <?php include 'Includes/addcategory.php'; ?>
                 </div>
                 
                 <div id="myModal-item" class="modal">
 
 <!--                   Modal content -->
-                    <?php include 'includes/additem.php'; ?>
+                    <?php include 'Includes/additem.php'; ?>
                 </div>
 
                 <div id="myModal-newStock" class="modal">
 
 <!--                   Modal content -->
-                    <?php include 'includes/newstock.php'; ?>
+                    <?php include 'Includes/newstock.php'; ?>
                 </div>
                 <div id="myModal-modif" class="modal">
 
-                  <?php // include 'Includes/actionslist.php';?>
+                  <?php include 'Includes/actionsList.php';?>
                   
                 </div>
-                
+                 <div id="myModal-adduser" class="modal">
+
+                   
+                    <?php include 'Includes/createuseraccount.php'; ?>
+               </div>
             <!--</section>-->
             <div class="col-md-3"></div>
             <div class="col-md-6" style="margin-left: auto; margin-right: auto" ><?php  include 'Includes/CategoryList.php'; ?></div>
@@ -78,21 +84,11 @@
         <script type="text/javascript"
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<!--        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
-        <script>
-            $(document).ready(function(){
-                var id = document.getElementById("myModal-modif");
-            id.modal("show");
-                
-            })
-           
-        </script>
-<!--        <script src="JavaScript/actionList.js"></script>
-        -->
         
 
 

@@ -4,13 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/business-management-master/home.php</file>
-            <file>file:/C:/xampp/htdocs/business-management-master/JavaScript/createAccount.js</file>
+            <file>file:/C:/xampp/htdocs/business-management-master/JavaScript/loginpage.js</file>
+            <file>file:/C:/xampp/htdocs/business-management-master/Style/indexModalStyle.css</file>
+            <file>file:/C:/xampp/htdocs/business-management-master/Includes/indexNavbar.php</file>
             <file>file:/C:/xampp/htdocs/business-management-master/index.php</file>
             <file>file:/C:/xampp/htdocs/business-management-master/Includes_action_client_server/insertdata.php</file>
-            <file>file:/C:/xampp/htdocs/business-management-master/Includes_action_client_server/login.php</file>
-            <file>file:/C:/xampp/htdocs/business-management-master/JavaScript/fieldValidation.js</file>
-            <file>file:/C:/xampp/htdocs/business-management-master/Includes/loginpage.php</file>
+            <file>file:/C:/xampp/htdocs/business-management-master/Includes/createuseraccount.php</file>
             <file>file:/C:/xampp/htdocs/business-management-master/Includes_action_client_server/registration.php</file>
+            <file>file:/C:/xampp/htdocs/business-management-master/Includes/additem.php</file>
         </group>
     </open-files>
 </project-private>

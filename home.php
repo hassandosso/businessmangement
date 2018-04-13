@@ -29,7 +29,17 @@ include 'Includes_action_client_server/login.php';
             <?php include 'includes/navbar.php'; ?>
         </nav>
         <div class="container afternav">
-            <a href="index.php" class="card"><h4 class=" card-link text-right"><?php if(isset($_SESSION['user'])){echo "{$_SESSION['user']}";} ?></h4></a>
+            <a href="index.php" class="card"><h3 class=" card-link text-right">
+                <?php 
+                    if(isset($_SESSION['user']) && !isset ($_SESSION['subuser'])){
+                        echo "{$_SESSION['user']}";     
+                    }
+                    else if(isset ($_SESSION['user']) && isset ($_SESSION['subuser'])){
+                       echo $_SESSION['user']."@".$_SESSION['subuser'];
+                                        
+                    }  
+                ?>
+                </h3></a>
             <div class="row">
                 <section class="col-md-4">
                     <div class="modal" id="myModal-login">

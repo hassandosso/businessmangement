@@ -20,6 +20,15 @@
     $billing = $username.'_billing';
     $billcode = $username.'_billcode';
     $customer = $username.'_customer';
+    $user_account =$username.'_useraccount'; 
+    
+    $create_useraccount = "CREATE TABLE `$user_account`( ".
+     "id INT NOT NULL AUTO_INCREMENT, ".
+     "fullname VARCHAR(225) NOT NULL, ".
+     "username VARCHAR(225) NOT NULL, ".
+     "password VARCHAR(225) NOT NULL, ".
+     "role VARCHAR(225) NOT NULL, ".
+     "PRIMARY KEY ( id, username )); ";
     
     $create_category = "CREATE TABLE `$category`( ".
      "category_id VARCHAR(20) NOT NULL, ".
@@ -29,7 +38,7 @@
     $create_item = "CREATE TABLE `$item`( ".
      "item_id VARCHAR(20) NOT NULL, ".
      "item_name VARCHAR(225) NOT NULL, ".
-     "category VARCHAR(225) NOT NULL, ".
+     "category VARCHAR(225) DEFAULT NULL, ".
      "price DOUBLE NOT NULL, ".
      "PRIMARY KEY ( item_id )); ";
     
@@ -37,6 +46,7 @@
      "stock_id VARCHAR(20) NOT NULL, ".
      "item_name VARCHAR(225) NOT NULL, ".
      "number INT NOT NULL, ".
+     "location VARCHAR(225) NOT NULL, ".
      "PRIMARY KEY ( stock_id )); ";
     
     $create_billing = "CREATE TABLE `$billing`( ".
@@ -111,11 +121,18 @@
                $result_billing = mysqli_query($conn, $create_billing);
                $result_billcode = mysqli_query($conn, $create_billcode);
                $result_customer = mysqli_query($conn, $create_customer);
+               $result_useraccount = mysqli_query($conn, $create_useraccount);
                 
         //      if(!$result_billing)
         //      {die(mysqli_error($conn));}
-
-               echo 'Account creates with success! click on login to acces you profile';
+               
+               $Insert_user = "INSERT INTO ".$user_account." (fullname, username, password, role) VALUES('$fullname', '$username', '$passwordencrypted', 'admin')";
+               $result_user = mysqli_query($conn, $Insert_user);
+               
+             
+                  echo 'Account creates with success! click on login to acces you profile';
+             
+              
         //       header("location: home.php");
            }
    }
