@@ -1,37 +1,50 @@
 <?php
-if(isset($_GET['category'])){
     
-$table_category = $_SESSION['user']."_".$_GET['category'];
-
-    $categoryList = "SELECT * FROM ".$table_category;
-    $Executecategory = mysqli_query($conn, $categoryList);
+if(isset($_GET['category'])){
+$checkContent = $_GET['category'];
     if($Executecategory){
         
     echo '<table id="example" class="table table-striped table-bordered" style="width:100%;">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Edit/Delete</th>
-            </tr>
+                <th>Name</th>';
+        if($checkContent=='modify'){
+             echo   '<th style="width:5%;">Edit/Delete</th>';
+        }
+         echo  ' </tr>
         </thead>';
     while ($getList = mysqli_fetch_array($Executecategory)){
-        
+        if($checkContent=='modify'){
         echo '
         <tbody>
             <tr>
                 <td id"catid">'.$getList['category_id'].'</td>
                 <td>'.$getList['category_name'].'</td>
-                <td><a id="edit" class="btn btn-primary" href="?edit='.$getList['category_id'].'">Edit</a><a id ="del" class="btn btn-danger" href="?del='.$getList['category_id'].'">Delete</a></td>
+                <td><a class="edit" href="'.$getList['category_id'].'"><span class="glyphicon glyphicon-edit">&nbsp;</a><a class="del"  href="'.$getList['category_id'].'"><span class="glyphicon glyphicon-trash"></a></td>
             </tr>
             </tbody>';
         
     }
+    else{
+        echo '
+        <tbody>
+            <tr>
+                <td id"catid">'.$getList['category_id'].'</td>
+                <td>'.$getList['category_name'].'</td>
+            </tr>
+            </tbody>';
+    }
+    }
+    
     echo '<tfoot>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Edit/Delete</th>
+                <th>Name</th>';
+               if($checkContent=='modify'){
+             echo   '<th>Edit/Delete</th>';
+        }
+         echo  '
             </tr>
         </tfoot>
     </table>';
@@ -41,4 +54,5 @@ $table_category = $_SESSION['user']."_".$_GET['category'];
          
     }
 }
+
 

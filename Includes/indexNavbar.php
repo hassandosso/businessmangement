@@ -10,7 +10,7 @@
                                         <ul class="dropdown-menu undermenu">
                                             <li><button id="addcategory" class="btn btn-danger btn-block">Add Category</button></li>
                                             <li><button id="additem" class="btn btn-danger btn-block">Add Item</button></li>
-                                            <li><a href="index.php?category=category" id="listitems" class="btn btn-danger btn-block">List Items</a></li>
+<!--                                            <li><a href="index.php?category=category" id="listitems" class="btn btn-danger btn-block">List Items</a></li>-->
                                         </ul>
                          </li>
                         <li class="dropdown">
@@ -18,7 +18,7 @@
                                     Stocks<span class="caret"></span></a>
                                 <ul class="dropdown-menu undermenu">
                                     <li><button id="newstock" class="btn btn-danger btn-block">New stock</button></li>
-                                    <li><button id="stockavalaible" class="btn btn-danger btn-block">Stock available</button></li>
+<!--                                    <li><button id="stockavalaible" class="btn btn-danger btn-block">Stock available</button></li>-->
                                 </ul>
                             </li>
                             <?php
@@ -35,7 +35,9 @@
                             </li>  ';
                                 }
                             ?>
-                         
+                            <li class="active">
+                                <a href="index.php?dashboard"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                            </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">

@@ -75,4 +75,53 @@ window.onclick = function(event) {
         modal_adduser.style.display = "none";
     }
 }
+
+$(".edit").click(function(){
+    var id = this.getAttribute("href");
+    $.ajax({
+        type: "get",
+       url:"Includes/Modifycategory.php",
+       data: {id: id},
+       dataType: "json",
+       success: function(data){
+//           console.log(JSON.stringify(data));
+           document.getElementById("catIdModif").value = data[0];
+           document.getElementById("catNameModif").value = data[1];
+           var modif = document.getElementById("myModal-modif");
+//            var spanModif = document.getElementsByClassName("close5");
+            modif.style.display="block";
+//            spanModif.onclick = function(){
+//                modif.style.display="none";
+//            }
+            window.onclick = function(event) {
+            if (event.target == modif) {
+                modif.style.display = "none";
+            }
+            }
+       }
+       
+    });
+    
+    return false;
+});
+ 
+ $(".del").click(function(){
+    var id = this.getAttribute("href");
+     var confirm = document.getElementById("myModal-confirm");
+     confirm.style.display="block";
+     $("#yes").click(function(){
+         console.log(id);
+    $.ajax({
+        type: "get",
+       url:"Includes/DeleteCategory.php",
+       data: {delid: id},
+       success: function(data){
+           alert(data);
+       }
+    });
+    
+});
+    
+    return false;
+});
 });

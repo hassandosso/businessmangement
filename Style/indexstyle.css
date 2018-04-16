@@ -17,6 +17,9 @@ ul, li ul{
     
     
 }
+.setting{
+    float: right;
+}
 .undermenu button{
     margin-bottom: 2px;
 }

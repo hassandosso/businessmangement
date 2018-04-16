@@ -29,7 +29,7 @@
 
 
 /* The Close Button */
-.close1, .close2, .close3, .close4 {
+.close1, .close2, .close3, .close4, .close5 {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -42,7 +42,9 @@
 .close3:hover,
 .close3:focus,
 .close4:hover,
-.close4:focus{
+.close4:focus,
+.close5:hover,
+.close5:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;
