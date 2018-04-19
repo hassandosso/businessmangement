@@ -4,7 +4,7 @@
  include '../connection/db_connection.php';
     $table_category = $_SESSION['user']."_category";
    
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     $EditQuery = "SELECT category_id, category_name FROM ".$table_category." WHERE category_id='$id'";
    $result = mysqli_query($conn, $EditQuery);

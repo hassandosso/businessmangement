@@ -75,11 +75,12 @@ window.onclick = function(event) {
         modal_adduser.style.display = "none";
     }
 }
-
-$(".edit").click(function(){
-    var id = this.getAttribute("href");
+//CATEGORY MODIFICATION AJAX
+$("#tbody").on('click','.edit',function(){
+    var id = $(this).data('edit');
+     console.log(id);
     $.ajax({
-        type: "get",
+        type: "post",
        url:"Includes/Modifycategory.php",
        data: {id: id},
        dataType: "json",
@@ -105,22 +106,25 @@ $(".edit").click(function(){
     return false;
 });
  
- $(".del").click(function(){
-    var id = this.getAttribute("href");
+$("#tbody").on('click','.del',function(){
+    var id = $(this).data('del');
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
      $("#yes").click(function(){
          console.log(id);
     $.ajax({
-        type: "get",
+        type: "post",
        url:"Includes/DeleteCategory.php",
        data: {delid: id},
        success: function(data){
            alert(data);
        }
     });
-    
 });
+    $("#no").click(function(){
+       confirm.style.display="none";
+        return false;
+    });
     
     return false;
 });

@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<!--         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">-->
         
 <!--         <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -72,7 +72,7 @@
                 <div id="myModal-modif" class="modal">
                       
                   <?php 
-                  include 'Includes/tableActions_modal.php';?>
+                  include 'Includes/CategoryModify_modal.php';?>
                    </div>
                 </div>
                  <div id="myModal-adduser" class="modal">
@@ -85,11 +85,16 @@
             <div class="row col-md-10 col-lg-10">
                 <?php 
                      include "Includes/dashboard.php";
-                    include 'Includes/CategoryList.php';
+                     
+                    include 'Includes/TableForCategoryList.php';
+                     
                     
                    
                 ?>
             </div>
+<!--            CATEGORY LIST-->
+           
+<!--CATEGORY LIST END-->
             </div>
             
         </div>
@@ -101,9 +106,9 @@
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
 <!--        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
         

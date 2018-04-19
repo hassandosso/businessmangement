@@ -6,8 +6,8 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="index.php?category=modify"><span class="glyphicon glyphicon-adjust"></span>Modify</a></li>
-                        <li><a class="dropdown-item" href="index.php?category=list"><span class="glyphicon glyphicon-list"></span>List</a></li>
+                        <li><span id="catlist" class="dropdown-item btn glyphicon glyphicon-list">List</span></li>
+                        <li><span id="action" class="dropdown-item btn glyphicon glyphicon-adjust">Actions</span></li>
                     </ul>
                 </div>
                 <div class="card-block">

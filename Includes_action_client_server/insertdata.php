@@ -70,3 +70,19 @@ if(isset($_POST['savestock'])){
     }
     
 }
+//UPDATE CATEGORY DATA
+if(isset($_POST['modifcat'])){
+    $modif_id = $_POST['catId'];
+    $modif_name = $_POST['category'];
+    
+    $query = "UPDATE ".$table_category." SET category_name='$modif_name', category_id='$modif_id' "
+            . "WHERE category_id='$modif_id' OR category_name='$modif_name'";
+    $result = mysqli_query($conn, $query);
+    if($result){
+         echo '<script>alert("Successfuly update!")</script>';
+    }
+    else{
+        echo '<script>alert("you cannot modify both field at the same, delete and do new")</script>';
+    }
+    
+}
