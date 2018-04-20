@@ -52,7 +52,7 @@ $(document).ready(function()
         }
     });
     
-//    CONTROLE ADMIN AND SUBUSER OF ACCOUNT
+//    CONTROL ADMIN AND SUBUSER OF ACCOUNT
 $(".radio").click(function(){
   var  isSelected = $('input:radio[name=useroption]:checked').val();
   var element = "<span class='input-group-addon removable'><i class='glyphicon glyphicon-user removable'></i></span>\
@@ -68,7 +68,6 @@ $(".radio").click(function(){
     }
     
 });
-
     
    });
 

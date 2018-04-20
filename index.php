@@ -5,12 +5,16 @@
  include 'Includes_action_client_server/login.php';
  include 'Includes_action_client_server/insertdata.php';
  include 'Includes_action_client_server/createuseraccount.php';
- 
 //DASHBOARD ACTION
  $table_category = $_SESSION['user']."_category";
     $categoryList = "SELECT * FROM ".$table_category;
     $Executecategory = mysqli_query($conn, $categoryList);
     $rowcount=mysqli_num_rows($Executecategory);
+    
+ $table_item = $_SESSION['user']."_item";
+    $ItemList = "SELECT * FROM ".$table_item;
+    $ExecuteItem = mysqli_query($conn, $ItemList);
+    $rowcount_item=mysqli_num_rows($ExecuteItem);
 
  
 ?>
@@ -82,19 +86,12 @@
                </div>
             <!--</section>-->
             <div class="col-md-1 col-lg-1"></div> 
-            <div class="row col-md-10 col-lg-10">
+            <div class="row col-md-10 col-lg-10 mytable">
                 <?php 
                      include "Includes/dashboard.php";
-                     
-                    include 'Includes/TableForCategoryList.php';
-                     
                     
-                   
-                ?>
+                      ?>
             </div>
-<!--            CATEGORY LIST-->
-           
-<!--CATEGORY LIST END-->
             </div>
             
         </div>
@@ -111,7 +108,7 @@
 <!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
-        
+        <script src="JavaScript/ItemList.js"></script>
 
 
        

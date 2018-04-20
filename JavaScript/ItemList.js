@@ -1,21 +1,24 @@
 
 $(document).ready(function(){
     //VARIABLE INITIALISATION
-var tableDesign = " <div id='content'>\n\
-<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for names..' title='Type in a name'>\n\
+var tableDesign = "<div id='content'>\n\
 <table width='100%' id='emp_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead>\n\
         <tr>\n\
-            <th>Category id</th>\n\
-            <th>Category Name</th>\n\
+            <th>Item id</th>\n\
+            <th>Item Name</th>\n\
+            <th>category</th>\n\
+            <th>Price</th>\n\
             <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
         </tr>\n\
     </thead>\n\
-    <tbody id='tbody'></tbody>\n\
+    <tbody id='body'></tbody>\n\
     <tfoot>\n\
         <tr>\n\
-            <th>Category id</th>\n\
-            <th>Category Name</th>\n\
+            <th>Item id</th>\n\
+            <th>Item Name</th>\n\
+            <th>category</th>\n\
+            <th>Price</th>\n\
             <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
         </tr>\n\
     </tfoot>\n\
@@ -30,7 +33,7 @@ var lastline = rowperpage-1;
 var alldata;
 var start = 0;
 //GET ALL DATA FROM DATABASE AND DISPLAY THE FIRST 10 CONTENTS;
-$("#catlist").click(function(){
+$("#itemlist").click(function(){
     $(".mytable #content").remove();
     $(".mytable").append(tableDesign);
     $(".mytable #tbody tr").remove();
@@ -38,14 +41,18 @@ $("#catlist").click(function(){
     start = 0;
     lastline = rowperpage-1;
     $.ajax({
-        url:'Includes/CategoryList.php',
+        url:'Includes/ItemList.php',
             type:'post',
             data:"",
             dataType:'json',
             success:function(response){
+                console.log("response");
                alldata = response;
                 createTablerow(alldata, lastline, start);
                 createPageNumber(rowperpage,alldata.length);
+            },
+            error:function(response){
+                console.log(response);
             }
     });
 });
@@ -93,11 +100,14 @@ $(".mytable").on('click','#but_next',function(){
 function createTablerow(data, perpage,start){
      $("#tbody tr").remove();
         for(var i=start; i<=perpage; i++){
-                var catid = data[i]['id'];
-                var catname = data[i]['name'];
-                $("#tbody").append("<tr><td>"+catid+"</td><td>"+catname+"</td><td style='width: 150px; text-align: center'>\n\
-                            <span class='glyphicon glyphicon-edit edit' title='Edit' data-edit='"+catid+"'></span>&nbsp;\n\
-                            <span class='glyphicon glyphicon-trash del'title='Delete' data-del='"+catid+"'></span></td></tr>");
+                var itemid = data[i]['id'];
+                var itemname = data[i]['name'];
+                var category = data[i]['category'];
+                var price = data[i]['price'];
+                $("#tbody").append("<tr><td>"+itemid+"</td><td>"+itemname+"</td><td>"+category+"</td><td>"+price+"</td>\n\
+                            <td style='width: 150px; text-align: center'>\n\
+                            <span class='glyphicon glyphicon-edit edit' title='Edit' data-edit='"+itemid+"'></span>&nbsp;\n\
+                            <span class='glyphicon glyphicon-trash del'title='Delete' data-del='"+itemid+"'></span></td></tr>");
             }
         }
         
@@ -119,3 +129,4 @@ function createTablerow(data, perpage,start){
  }
  }
 });
+

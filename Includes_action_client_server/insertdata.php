@@ -30,6 +30,7 @@ if(isset($_POST['savecat'])){
 //INSERT ITEMS
 if(isset($_POST['saveitem'])){
     global $conn;
+    if($_POST['saveitem']=='Save'){
     $item_id = $_POST['itemId'];
     $item_name = $_POST['item'];
     $category = $_POST['selectcategory'];
@@ -46,6 +47,30 @@ if(isset($_POST['saveitem'])){
     else{
         echo '<script>alert("Successfuly save!")</script>';
     }
+    }
+    else if($_POST['saveitem']=='import'){
+        $filename=$_FILES['import']['tmp_name'];	
+         if($_FILES['import']['size'] > 0)
+             {
+            $file = fopen($filename, "r");
+            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
+             {
+               $sql = "INSERT INTO ".$table_item." VALUES('$getData[0]','$getData[1]','$getData[2]','$getData[3]')"; 
+
+               $result = mysqli_query($conn, $sql);
+                if(!$result)
+                {
+                    die(mysqli_error($conn));
+                        echo '<script>alert("Invalid file, please upload CVS file")</script>';	
+                }
+                else {
+                      echo '<script>alert("File has been successfully imported!")</script>';
+                    }
+	         }
+			
+	         fclose($file);	
+		 }
+	}	 
     
 }
 

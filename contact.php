@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+include 'connection/db_connection.php';
+include 'Includes_action_client_server/login.php';
+//include 'Includes_action_client_server/logout.php';
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">

@@ -28,13 +28,12 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-adjust"></span>Modify</a></li>
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-list"></span>List</a></li>
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-list"></span>Sold</a></li>
+                        <li><span id="itemlist" class="dropdown-item btn glyphicon glyphicon-list">List</span></li>
+                         <li><span id="Item-action" class="dropdown-item btn glyphicon glyphicon-adjust">Actions</span></li>
                     </ul>
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title font-weight-normal text-info">75632</h4>
+                    <h4 class="card-title font-weight-normal text-info"><?php echo "{$rowcount_item}";?></h4>
                     <p class="card-text ">Items</p>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0"

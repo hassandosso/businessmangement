@@ -128,4 +128,23 @@ $("#tbody").on('click','.del',function(){
     
     return false;
 });
+
+//    IMPORT OR ADD DIRECTLY ITEM CONTROL
+$(".itemradio").click(function(){
+  var  isSelected = $('input:radio[name=addoption]:checked').val();
+//  var element = "<input type='file' name='import' class='form-control removefile'>";
+    if(isSelected == "import" ){
+        $("#file").removeClass('hidden');
+        $(".tohide").addClass('hidden');
+        $(".btn-saveitem").val("import");
+    }
+    
+    else if(isSelected == "add" ){
+        $("#file").addClass('hidden');
+        $(".tohide").removeClass('hidden');
+        $(".btn-saveitem").val("Save");
+    }
+    
+});
+
 });

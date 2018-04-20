@@ -1,54 +1,22 @@
-var btn_prev = document.getElementById("but_prev");
-var btn_next = document.getElementById("but_next");
-var rowperpage = 10;
-var lastline = rowperpage-1;
-var alldata;
-var start = 0;
-$("#catlist").click(function(){
-    
-    S.ajax({
-        url:'Includes/CategoryList.php',
-            type:'post',
-            data:"",
-            dataType:'json',
-            success:function(response){
-               alldata = response;
-                createTablerow(alldata, lastline, start);
-            }
-    });
-});
-$("#but_next").click(function(){
-//            var rowid = Number($("#txt_rowid").val());
-//            var allcount = Number($("#txt_allcount").val());
-               start +=rowperpage;
-               lastline+=rowperpage;
-//            rowid += rowperpage;
-            if(lastline == alldata.length){
-                btn_next.setAttribute("disabled", true);
-//                $("#txt_rowid").val(rowid);
-            }
-            createTablerow(alldata, lastline, start);
-            });
-     $("#but_prev").click(function(){
-//            btn_next.removeAttribute("disabled");
-             start -=rowperpage;
-             lastline-=rowperpage;
-              createTablerow(alldata, lastline, start);
-        });
-            
-function createTablerow(var data, var perpage, var start){
-
-//        var dataLen = data.length;
-
-//        $("#emp_table tr:not(:first)").remove();
-
-        for(var i=start; i<perpage; i++){
-            
-                var catid = data[i]['id'];
-                var catname = data[i]['name'];
-
-                $("#emp_table").append("<tr><td>"+catid+"</td><td>"+catname+"</td>\n\
-                <td><a class='edit' href='"+catid+"'><span class='glyphicon glyphicon-edit'>&nbsp;\n\
-                </a><a class='del'  href='"+catid"'><span class='glyphicon glyphicon-trash'></a></td></tr>");
-            }
-        }
+var tableDesign = " <div id='content'>\n\
+<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for names..' title='Type in a name'>\n\
+<table width='100%' id='emp_table' class='table table-striped table-bordered' style='width:100%;'>\n\
+    <thead>\n\
+        <tr>\n\
+            <th>Category id</th>\n\
+            <th>Category Name</th>\n\
+            <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
+        </tr>\n\
+    </thead>\n\
+    <tbody id='tbody'></tbody>\n\
+    <tfoot>\n\
+        <tr>\n\
+            <th>Category id</th>\n\
+            <th>Category Name</th>\n\
+            <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
+        </tr>\n\
+    </tfoot>\n\
+</table>\n\
+<div id='div_pagination' style='float: right'>\n\
+</div>\n\
+</div>";

@@ -85,7 +85,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center">
         © 2018 Copyright:
-        <a href="https://mdbootstrap.com/material-design-for-bootstrap/"> MDBootstrap.com </a>
+        <a href="#">Business-Management</a>
     </div>
     <!--/.Copyright-->
 
