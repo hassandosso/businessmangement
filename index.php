@@ -25,18 +25,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+       
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!--         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">-->
-        
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 <!--         <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/themify-icons.css">
-         
-        <link rel="stylesheet" href="Style/indexstyle.css">
+<!--         new link-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--        end new style-->
+        
+        <link rel="stylesheet" href="Style/materialize.css">
+         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="Style/indexModalStyle.css">
+         <link rel="stylesheet" href="Style/indexstyle.css">
        
     </head>
     <body>
@@ -92,7 +99,25 @@
                     
                       ?>
             </div>
-            </div>
+            <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large pink waves-effect waves-light">
+        <i class="large material-icons">add</i>
+      </a>
+
+      <ul>
+        <li>
+            <span id="add_note" class="btn-floating red"><i class="material-icons" title="Take note">note_add</i></span>
+        </li>
+
+        <li>
+            <span class="btn-floating yellow darken-1" id="billcode"><i class="material-icons" title="Add bill code">vpn_key</i></span>
+        </li>
+
+        <li>
+            <span class="btn-floating green" id="customer" ><i class="material-icons" title="add customer">account_circle</i></span>
+        </li>
+      </ul>
+    </div>
             
         </div>
     
@@ -106,6 +131,7 @@
 <!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
         <script src="JavaScript/ItemList.js"></script>

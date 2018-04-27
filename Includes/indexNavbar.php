@@ -35,8 +35,8 @@
                             </li>  ';
                                 }
                             ?>
-                            <li class="active">
-                                <a href="index.php?dashboard"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                            <li>
+                                <a href="index.php?dashboard" class="dash"> <i class="menu-icon fa fa-dashboard "></i>Dashboard </a>
                             </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -49,11 +49,12 @@ if(isset($_POST['saveitem'])){
     }
     }
     else if($_POST['saveitem']=='import'){
-        $filename=$_FILES['import']['tmp_name'];	
+        $filename=$_FILES['import']['tmp_name'];
+//         echo "<script>alert('".$filename."')</script>";
          if($_FILES['import']['size'] > 0)
              {
             $file = fopen($filename, "r");
-            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
+            while (($getData = fgetcsv($file, 255, ",")) !== FALSE)
              {
                $sql = "INSERT INTO ".$table_item." VALUES('$getData[0]','$getData[1]','$getData[2]','$getData[3]')"; 
 
@@ -80,8 +81,8 @@ if(isset($_POST['savestock'])){
     $stock_id = $_POST['stockId'];
     $item= $_POST['selectItem'];
     $item_number = $_POST['number'];
-    
-    $insert_query = "INSERT INTO ".$table_stock." VALUES('$stock_id', '$item', '$item_number')";
+    $date = date("Y/m/d");
+    $insert_query = "INSERT INTO ".$table_stock." VALUES('$stock_id', '$item', '$item_number', '$date')";
     $insert_execute = mysqli_query($conn, $insert_query);
     if(!$insert_execute){
         
@@ -100,14 +101,33 @@ if(isset($_POST['modifcat'])){
     $modif_id = $_POST['catId'];
     $modif_name = $_POST['category'];
     
-    $query = "UPDATE ".$table_category." SET category_name='$modif_name', category_id='$modif_id' "
-            . "WHERE category_id='$modif_id' OR category_name='$modif_name'";
+    $query = "UPDATE ".$table_category." SET category_name='$modif_name'"
+            . "WHERE category_id='$modif_id'";
     $result = mysqli_query($conn, $query);
     if($result){
          echo '<script>alert("Successfuly update!")</script>';
     }
     else{
         echo '<script>alert("you cannot modify both field at the same, delete and do new")</script>';
+    }
+    
+}
+
+//UPDATE ITEM DATA
+if(isset($_POST['modifitem'])){
+    $modif_id = $_POST['itemId'];
+    $modif_name = $_POST['item'];
+    $modif_category = $_POST['item-category'];
+    $modif_price = $_POST['price'];
+    $query = "UPDATE ".$table_item." SET item_name='$modif_name',category='$modif_category',price='$modif_price' "
+            . "WHERE item_id='$modif_id'";
+    $result = mysqli_query($conn, $query);
+    if($result){
+         echo '<script>alert("Successfuly update!")</script>';
+    }
+    else{
+        $error = die(mysqli_error($conn));
+        echo '<script>alert("'.$error.'")</script>';
     }
     
 }

@@ -1,5 +1,6 @@
 $(document).ready(function(){
 // Get the modal
+
 var modal = document.getElementById('myModal-login');
 
 
@@ -15,12 +16,14 @@ var span = document.getElementsByClassName("close")[0];
 var span01 = document.getElementsByClassName("close01")[0];
 
 // When the user clicks the button, open the modal 
+
 btn.onclick = function() {
     modal.style.display = "block";
     $('#sign_in').addClass('hidden');
     $('#registration').removeClass('hidden');
     
 }
+
 
 btn1.onclick = function() {
     modal.style.display = "block";

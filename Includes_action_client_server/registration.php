@@ -11,6 +11,7 @@
     $mobile = $_POST['mobile'];
     $phone = $_POST['phone'];
     
+    
     $passwordencrypted   = password_hash( $password, PASSWORD_BCRYPT, array('cost' => 11));
     
     //client tables name
@@ -28,26 +29,26 @@
      "username VARCHAR(225) NOT NULL, ".
      "password VARCHAR(225) NOT NULL, ".
      "role VARCHAR(225) NOT NULL, ".
-     "PRIMARY KEY ( id, username )); ";
+     "PRIMARY KEY ( id, username )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_category = "CREATE TABLE `$category`( ".
      "category_id VARCHAR(20) NOT NULL, ".
      "category_name VARCHAR(225) NOT NULL, ".
-     "PRIMARY KEY ( category_id )); ";
+     "PRIMARY KEY ( category_id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_item = "CREATE TABLE `$item`( ".
      "item_id VARCHAR(20) NOT NULL, ".
      "item_name VARCHAR(225) NOT NULL, ".
      "category VARCHAR(225) DEFAULT NULL, ".
      "price DOUBLE NOT NULL, ".
-     "PRIMARY KEY ( item_id )); ";
+     "PRIMARY KEY ( item_id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_stock = "CREATE TABLE `$stock`( ".
      "stock_id VARCHAR(20) NOT NULL, ".
      "item_name VARCHAR(225) NOT NULL, ".
      "number INT NOT NULL, ".
-     "location VARCHAR(225) NOT NULL, ".
-     "PRIMARY KEY ( stock_id )); ";
+     "entry_date date, ".
+     "PRIMARY KEY ( stock_id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_billing = "CREATE TABLE `$billing`( ".
      "bill_id VARCHAR(20) NOT NULL, ".
@@ -61,19 +62,19 @@
      "bill_date date DEFAULT NULL, ".
      "customer VARCHAR(225) NOT NULL, ".
      "bill_no INT NOT NULL, ".
-     "PRIMARY KEY ( bill_id )); ";
+     "PRIMARY KEY ( bill_id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_billcode= "CREATE TABLE `$billcode`( ".
      "id VARCHAR(20) NOT NULL, ".
      "code VARCHAR(225) NOT NULL, ".
-     "PRIMARY KEY ( id )); ";
+     "PRIMARY KEY ( id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     $create_customer = "CREATE TABLE `$customer`( ".
      "customer_id VARCHAR(20) NOT NULL, ".
      "customer_name VARCHAR(225) NOT NULL, ".
      "customer_contact VARCHAR(225) NOT NULL, ".
      "customer_address VARCHAR(225) NOT NULL, ".
-     "PRIMARY KEY ( customer_id )); ";
+     "PRIMARY KEY ( customer_id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     
     
@@ -123,16 +124,18 @@
                $result_customer = mysqli_query($conn, $create_customer);
                $result_useraccount = mysqli_query($conn, $create_useraccount);
                 
-        //      if(!$result_billing)
-        //      {die(mysqli_error($conn));}
-               
+              if(!$result_category)
+              {$error = die(mysqli_error($conn));
+              echo $error;
+              }
+ else {
                $Insert_user = "INSERT INTO ".$user_account." (fullname, username, password, role) VALUES('$fullname', '$username', '$passwordencrypted', 'admin')";
                $result_user = mysqli_query($conn, $Insert_user);
                
              
                   echo 'Account creates with success! click on login to acces you profile';
              
-              
+              }
         //       header("location: home.php");
            }
    }

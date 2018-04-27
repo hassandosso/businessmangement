@@ -76,9 +76,10 @@ window.onclick = function(event) {
     }
 }
 //CATEGORY MODIFICATION AJAX
-$("#tbody").on('click','.edit',function(){
+$(".mytable").on('click','.edit',function(){
+    $("#itemModify").addClass('hidden');
+    $("#categoryModify").removeClass('hidden');
     var id = $(this).data('edit');
-     console.log(id);
     $.ajax({
         type: "post",
        url:"Includes/Modifycategory.php",
@@ -91,9 +92,9 @@ $("#tbody").on('click','.edit',function(){
            var modif = document.getElementById("myModal-modif");
 //            var spanModif = document.getElementsByClassName("close5");
             modif.style.display="block";
-//            spanModif.onclick = function(){
-//                modif.style.display="none";
-//            }
+            spancategory.onclick = function(){
+                 modif.style.display = "none";
+            }
             window.onclick = function(event) {
             if (event.target == modif) {
                 modif.style.display = "none";
@@ -106,7 +107,7 @@ $("#tbody").on('click','.edit',function(){
     return false;
 });
  
-$("#tbody").on('click','.del',function(){
+$(".mytable").on('click','.del',function(){
     var id = $(this).data('del');
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
@@ -123,6 +124,7 @@ $("#tbody").on('click','.del',function(){
 });
     $("#no").click(function(){
        confirm.style.display="none";
+       id='';
         return false;
     });
     
@@ -146,5 +148,66 @@ $(".itemradio").click(function(){
     }
     
 });
+//MODIFY ITEM
+$(".mytable").on('click','.edit-item',function(){
+    $("#categoryModify").addClass('hidden');
+    $("#itemModify").removeClass('hidden');
+    var id = $(this).data('edititem');
+    $.ajax({
+        type: "post",
+       url:"Includes/ModifyItem.php",
+       data: {iditem: id},
+       dataType: "json",
+       success: function(data){
+           console.log(JSON.stringify(data));
+           document.getElementById("itemIdModif").value = data[0];
+           document.getElementById("itemNameModif").value = data[1];
+           document.getElementsByName('item-category')[0].options[0].innerHTML = data[2];
+           document.getElementsByName('item-category')[0].option[0].value = data[2];
+           document.getElementById("itemPriceModif").value = data[3];
+           var modif = document.getElementById("myModal-modif");
+//            var spanModif = document.getElementsByClassName("close5");
+            modif.style.display="block";
+//            spanModif.onclick = function(){
+//                modif.style.display="none";
+//            }
+            window.onclick = function(event) {
+            if (event.target === modif) {
+                modif.style.display = "none";
+            }
+            }
+       },
+       error:function(data){
+           console.log(data);
+       }
+       
+    });
+    
+    return false;
+});
 
+//DELETE ITEM
+$(".mytable").on('click','.del-item',function(){
+    var id = $(this).data('delitem');
+     var confirm = document.getElementById("myModal-confirm");
+     confirm.style.display="block";
+     $("#yes").click(function(){
+         console.log(id);
+    $.ajax({
+        type: "post",
+       url:"Includes/deleteitem.php",
+       data: {deliditem: id},
+       success: function(data){
+           alert(data);
+       }
+    });
+});
+    $("#no").click(function(){
+       confirm.style.display="none";
+       id ='';
+        return false;
+    });
+    
+    return false;
+});
 });

@@ -18,7 +18,7 @@ include 'Includes_action_client_server/login.php';
         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">   
         <link href="fontawesome-free-5.0.9/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
-       
+       <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
         <!--        CSS link-->
         <link rel="stylesheet" href="Style/menustyle.css">
         <link rel="stylesheet" href="Style/home_contact_ModalStyle.css">
