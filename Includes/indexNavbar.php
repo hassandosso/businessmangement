@@ -30,7 +30,7 @@
                                 <ul class="dropdown-menu undermenu">
                                     <li><button id="orderform" class="btn btn-danger btn-block">Order form</button></li>
                                     <li><button id="deliveryorder" class="btn btn-danger btn-block">Delivery order</button></li>
-                                    <li><button id="bill" class="btn btn-danger btn-block">Bill</button></li>
+                                    <li><a href="stock.php"><button id="bill" class="btn btn-danger btn-block">Bill</button></a></li>
                                 </ul>
                             </li>  ';
                                 }

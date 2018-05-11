@@ -6,13 +6,14 @@
    
     $id = $_POST['id'];
 
-    $EditQuery = "SELECT category_id, category_name FROM ".$table_category." WHERE category_id='$id'";
+    $EditQuery = "SELECT * FROM ".$table_category." WHERE category_id='$id'";
    $result = mysqli_query($conn, $EditQuery);
    if($result){
        $record = array();
    $data = mysqli_fetch_array($result);
-   $record[0] = $data['category_id'];
-   $record[1] = $data['category_name'];
+   $record[0] = $data['id'];
+   $record[1] = $data['category_id'];
+   $record[2] = $data['category_name'];
    
    echo json_encode($record);
    }

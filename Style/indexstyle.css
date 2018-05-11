@@ -35,5 +35,8 @@ ul, li ul{
     
     padding-bottom: 0px !important;
 }
+.myInput-item, #myInput{
+    width: 20%!important;
+}
 
 

@@ -10,19 +10,47 @@ $table_customer = $_SESSION['user']."_customer";
 // INSERT CATEGORY
 if(isset($_POST['savecat'])){
     global $conn;
-    $cat_id = $_POST['catId'];
-    $cat_name = $_POST['category'];
-    
-    $insert_query = "INSERT INTO ".$table_category." VALUES('$cat_id', '$cat_name')";
-    $insert_execute = mysqli_query($conn, $insert_query);
-    if(!$insert_execute){
-        $error = mysqli_error($conn);
-        if(preg_match("/duplicate entry/i", $error)){
-             echo '<script>alert("category already exist")</script>';
+    if($_POST['savecat']=='Save')
+    {
+        $cat_id = $_POST['catId'];
+        $cat_name = $_POST['category'];
+
+        $insert_query = "INSERT INTO ".$table_category." (category_id, category_name) VALUES('$cat_id', '$cat_name')";
+        $insert_execute = mysqli_query($conn, $insert_query);
+        if(!$insert_execute){
+            $error = mysqli_error($conn);
+            if(preg_match("/duplicate entry/i", $error)){
+                 echo '<script>alert("category already exist")</script>';
+            }
+        }
+        else{
+            echo '<script>alert("Successfuly save!")</script>';
         }
     }
-    else{
-        echo '<script>alert("Successfuly save!")</script>';
+    else if($_POST['savecat']=='import'){
+        $filename2=$_FILES['importcat']['tmp_name'];
+         if($_FILES['importcat']['size'] > 0)
+             {
+            $file2 = fopen($filename2, "r");
+            while (($getData2 = fgetcsv($file2, 255, ",")) !== FALSE)
+             {
+               $sql = "INSERT INTO ".$table_category." (category_id, category_name)"
+                       . " VALUES('$getData2[0]','$getData2[1]')"; 
+
+               $result = mysqli_query($conn, $sql);
+                if(!$result)
+                {
+                   echo '<script>alert("Invalid file, please upload CVS file")</script>';	
+                    die(mysqli_error($conn));
+                        
+                }
+                else {
+                      echo '<script>alert("File has been successfully imported!")</script>';
+                    }
+	         }
+			
+	         fclose($file2);	
+		 }
     }
     
 }
@@ -36,7 +64,8 @@ if(isset($_POST['saveitem'])){
     $category = $_POST['selectcategory'];
     $item_price = $_POST['price'];
     
-    $insert_query = "INSERT INTO ".$table_item." VALUES('$item_id', '$item_name', '$category', '$item_price')";
+    $insert_query = "INSERT INTO ".$table_item." (item_id, item_name, category, price) "
+            . "VALUES('$item_id', '$item_name', '$category', '$item_price')";
     $insert_execute = mysqli_query($conn, $insert_query);
     if(!$insert_execute){
         $error = mysqli_error($conn);
@@ -50,13 +79,13 @@ if(isset($_POST['saveitem'])){
     }
     else if($_POST['saveitem']=='import'){
         $filename=$_FILES['import']['tmp_name'];
-//         echo "<script>alert('".$filename."')</script>";
          if($_FILES['import']['size'] > 0)
              {
             $file = fopen($filename, "r");
             while (($getData = fgetcsv($file, 255, ",")) !== FALSE)
              {
-               $sql = "INSERT INTO ".$table_item." VALUES('$getData[0]','$getData[1]','$getData[2]','$getData[3]')"; 
+               $sql = "INSERT INTO ".$table_item." (item_id, item_name, category, price)"
+                       . " VALUES('$getData[0]','$getData[1]','$getData[2]','$getData[3]')"; 
 
                $result = mysqli_query($conn, $sql);
                 if(!$result)
@@ -82,7 +111,8 @@ if(isset($_POST['savestock'])){
     $item= $_POST['selectItem'];
     $item_number = $_POST['number'];
     $date = date("Y/m/d");
-    $insert_query = "INSERT INTO ".$table_stock." VALUES('$stock_id', '$item', '$item_number', '$date')";
+    $insert_query = "INSERT INTO ".$table_stock." (stock_id, item_name, initial_number, entry_date,actual_number) "
+            . "VALUES('$stock_id', '$item', '$item_number', '$date','$item_number')";
     $insert_execute = mysqli_query($conn, $insert_query);
     if(!$insert_execute){
         
@@ -98,11 +128,12 @@ if(isset($_POST['savestock'])){
 }
 //UPDATE CATEGORY DATA
 if(isset($_POST['modifcat'])){
+    $id = $_POST['Id'];
     $modif_id = $_POST['catId'];
     $modif_name = $_POST['category'];
     
-    $query = "UPDATE ".$table_category." SET category_name='$modif_name'"
-            . "WHERE category_id='$modif_id'";
+    $query = "UPDATE ".$table_category." SET category_name='$modif_name', category_id='$modif_id' "
+            . "WHERE id='$id'";
     $result = mysqli_query($conn, $query);
     if($result){
          echo '<script>alert("Successfuly update!")</script>';
@@ -115,12 +146,13 @@ if(isset($_POST['modifcat'])){
 
 //UPDATE ITEM DATA
 if(isset($_POST['modifitem'])){
+    $id = $_POST['Id'];
     $modif_id = $_POST['itemId'];
     $modif_name = $_POST['item'];
     $modif_category = $_POST['item-category'];
     $modif_price = $_POST['price'];
-    $query = "UPDATE ".$table_item." SET item_name='$modif_name',category='$modif_category',price='$modif_price' "
-            . "WHERE item_id='$modif_id'";
+    $query = "UPDATE ".$table_item." SET item_name='$modif_name',category='$modif_category',price='$modif_price', "
+            . "item_id='$modif_id' WHERE id='$id'";
     $result = mysqli_query($conn, $query);
     if($result){
          echo '<script>alert("Successfuly update!")</script>';

@@ -4,12 +4,14 @@ var modal_cat = document.getElementById('myModal-category');
 var modal_item = document.getElementById('myModal-item');
 var modal_newstock = document.getElementById('myModal-newStock');
 var modal_adduser = document.getElementById('myModal-adduser');
+
 // Get the button that opens the modal
-//var btn = document.getElementById("logout");
 var btncategory = document.getElementById("addcategory");
 var btnitem = document.getElementById("additem");
 var btnnewstock = document.getElementById("newstock");
 var btnadduser = document.getElementById("adduser");
+
+
 
 // Get the <span> element that closes the modal
 
@@ -24,24 +26,28 @@ btncategory.onclick = function() {
     modal_item.style.display = "none";
     modal_newstock.style.display ="none";
      modal_adduser.style.display = "none";
+
 }
 btnitem.onclick = function() {
     modal_item.style.display = "block";
     modal_cat.style.display = "none";
     modal_newstock.style.display ="none";
     modal_adduser.style.display = "none";
+
 }
 btnnewstock.onclick = function(){
     modal_newstock.style.display = "block";
     modal_cat.style.display = "none";
     modal_item.style.display="none";
     modal_adduser.style.display = "none";
+
 }
 btnadduser.onclick = function() {
     modal_adduser.style.display = "block";
     modal_newstock.style.display = "none";
     modal_cat.style.display = "none";
     modal_item.style.display="none";
+
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -75,6 +81,11 @@ window.onclick = function(event) {
         modal_adduser.style.display = "none";
     }
 }
+$('.modal-content').resizable({
+      //alsoResize: ".modal-dialog",
+      minHeight: 300,
+      minWidth: 300
+    });
 //CATEGORY MODIFICATION AJAX
 $(".mytable").on('click','.edit',function(){
     $("#itemModify").addClass('hidden');
@@ -87,8 +98,9 @@ $(".mytable").on('click','.edit',function(){
        dataType: "json",
        success: function(data){
 //           console.log(JSON.stringify(data));
-           document.getElementById("catIdModif").value = data[0];
-           document.getElementById("catNameModif").value = data[1];
+           document.getElementById("Idcat").value = data[0];
+           document.getElementById("catIdModif").value = data[1];
+           document.getElementById("catNameModif").value = data[2];
            var modif = document.getElementById("myModal-modif");
 //            var spanModif = document.getElementsByClassName("close5");
             modif.style.display="block";
@@ -133,18 +145,37 @@ $(".mytable").on('click','.del',function(){
 
 //    IMPORT OR ADD DIRECTLY ITEM CONTROL
 $(".itemradio").click(function(){
-  var  isSelected = $('input:radio[name=addoption]:checked').val();
-//  var element = "<input type='file' name='import' class='form-control removefile'>";
-    if(isSelected == "import" ){
+  var  isSelected = $(this).val();
+  console.log(isSelected);
+    if(isSelected === "import" ){
         $("#file").removeClass('hidden');
         $(".tohide").addClass('hidden');
         $(".btn-saveitem").val("import");
     }
     
-    else if(isSelected == "add" ){
+    else if(isSelected === "add" ){
         $("#file").addClass('hidden');
         $(".tohide").removeClass('hidden');
         $(".btn-saveitem").val("Save");
+    }
+    
+});
+
+//    IMPORT OR ADD DIRECTLY CATEGORY CONTROL
+$(".catradio").click(function(){
+  var  isSelected = $(this).val();
+  console.log(isSelected);
+
+    if(isSelected === "importcat" ){
+        $("#category_csv").removeClass('hidden');
+        $(".hideitem").addClass('hidden');
+        $(".btn-cat").val("import");
+    }
+    
+    else if(isSelected === "addcat" ){
+        $("#category_csv").addClass('hidden');
+        $(".hideitem").removeClass('hidden');
+        $(".btn-cat").val("Save");
     }
     
 });
@@ -160,11 +191,12 @@ $(".mytable").on('click','.edit-item',function(){
        dataType: "json",
        success: function(data){
            console.log(JSON.stringify(data));
-           document.getElementById("itemIdModif").value = data[0];
-           document.getElementById("itemNameModif").value = data[1];
-           document.getElementsByName('item-category')[0].options[0].innerHTML = data[2];
-           document.getElementsByName('item-category')[0].option[0].value = data[2];
-           document.getElementById("itemPriceModif").value = data[3];
+            document.getElementById("Iditem").value = data[0];
+           document.getElementById("itemIdModif").value = data[1];
+           document.getElementById("itemNameModif").value = data[2];
+           $('select option[0]').innerHTML = data[3];
+           $('select option[0]').value = data[3];
+           document.getElementById("itemPriceModif").value = data[4];
            var modif = document.getElementById("myModal-modif");
 //            var spanModif = document.getElementsByClassName("close5");
             modif.style.display="block";

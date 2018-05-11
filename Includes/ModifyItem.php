@@ -11,10 +11,11 @@
    if($result){
        $record = array();
    $data = mysqli_fetch_array($result);
-   $record[0] = $data['item_id'];
-   $record[1] = $data['item_name'];
-   $record[2] = $data['category'];
-   $record[3] = $data['price'];
+   $record[0] = $data['id'];
+   $record[1] = $data['item_id'];
+   $record[2] = $data['item_name'];
+   $record[3] = $data['category'];
+   $record[4] = $data['price'];
    
    echo ltrim(json_encode($record), "\r\n");
    }

@@ -56,7 +56,7 @@ $(document).ready(function()
 $(".radio").click(function(){
   var  isSelected = $('input:radio[name=useroption]:checked').val();
   var element = "<span class='input-group-addon removable'><i class='glyphicon glyphicon-user removable'></i></span>\
-                                <input type='text' name='subuser' class='form-control p_input removable' placeholder='Sub user'>";
+                                <input type='text' name='subuser' class='form-control removable' placeholder='Sub user'>";
     if(isSelected == "subuser" ){
         $("#subusername").append(element);
         $("#subusername").addClass('user')
@@ -68,6 +68,9 @@ $(".radio").click(function(){
     }
     
 });
+
+ }); 
     
-   });
+
+   
 

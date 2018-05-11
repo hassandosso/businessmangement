@@ -6,8 +6,8 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><span id="catlist" class="dropdown-item btn glyphicon glyphicon-list">List</span></li>
-                        <li><span id="action" class="dropdown-item btn glyphicon glyphicon-adjust">Actions</span></li>
+                        <li><a id="catlist" href="#" class="dropdown-item glyphicon glyphicon-list">List</a></li>
+                        <li><a id="action" href="#" class="dropdown-item glyphicon glyphicon-adjust">Actions</a></li>
                     </ul>
                 </div>
                 <div class="card-block">
@@ -28,8 +28,8 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><span id="itemlist" class="dropdown-item btn glyphicon glyphicon-list">List</span></li>
-                         <li><span id="Item-action" class="dropdown-item btn glyphicon glyphicon-adjust">Actions</span></li>
+                        <li><a id="itemlist" href="#" class="dropdown-item glyphicon glyphicon-list">List</a></li>
+                        <li><a id="Item-action" href="#" class="dropdown-item glyphicon glyphicon-adjust">Actions</a></li>
                     </ul>
                 </div>
                 <div class="card-block">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title font-weight-normal text-warning">2156</h4>
+                    <h4 class="card-title font-weight-normal text-warning"><?php echo "{$rowcount_stock}";?></h4>
                     <p class="card-text">Stocks</p>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
@@ -84,3 +84,4 @@
                 </div>
             </div>
         </div>
+

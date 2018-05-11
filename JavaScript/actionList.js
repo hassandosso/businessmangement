@@ -1,22 +1,22 @@
-var tableDesign = " <div id='content'>\n\
-<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search for names..' title='Type in a name'>\n\
-<table width='100%' id='emp_table' class='table table-striped table-bordered' style='width:100%;'>\n\
-    <thead>\n\
-        <tr>\n\
-            <th>Category id</th>\n\
-            <th>Category Name</th>\n\
-            <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
-        </tr>\n\
-    </thead>\n\
-    <tbody id='tbody'></tbody>\n\
-    <tfoot>\n\
-        <tr>\n\
-            <th>Category id</th>\n\
-            <th>Category Name</th>\n\
-            <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\
-        </tr>\n\
-    </tfoot>\n\
-</table>\n\
-<div id='div_pagination' style='float: right'>\n\
-</div>\n\
-</div>";
+var tableDesign = ` <tr class="row_1">
+	<td class="noteditable" title="This field is done automatically">1</td>
+    	<td>
+            <select name="designation"  class="form-control" id="designation">
+            <option value="0">Select item's</option>
+            <?php
+                $table = $_SESSION['user']."_item";
+                $table1 = $_SESSION['user']."_stock";
+                $select_item = "SELECT ".$table.".item_name, ".$table.".price FROM ".$table.",".$table1." "
+                        . "WHERE ".$table.".item_name = ".$table1.".item_name";
+                $resultselect = mysqli_query($conn, $select_item);
+                while($getdata = mysqli_fetch_array($resultselect)){
+            ?>
+            <option value="<?php echo $getdata['price'];?>"><?php echo $getdata['item_name'];?></option>
+            <?php  }?>
+        </select>
+        </td>
+        <td><input value="1" class="qt"</td>
+        <td><input value="0.0" class="price" readonly="readonly"></td>
+        <td><input value="0" class="disc"</td>
+        <td><input value="0.0" class="totalprice" readonly="readonly"></td>            
+	</tr>`;

@@ -15,6 +15,11 @@
     $ItemList = "SELECT * FROM ".$table_item;
     $ExecuteItem = mysqli_query($conn, $ItemList);
     $rowcount_item=mysqli_num_rows($ExecuteItem);
+    
+  $table_stock = $_SESSION['user']."_stock";
+    $stockList = "SELECT * FROM ".$table_stock;
+    $Executestock = mysqli_query($conn, $stockList);
+    $rowcount_stock=mysqli_num_rows($Executestock);
 
  
 ?>
@@ -24,6 +29,7 @@
         <title>Business Management</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="Style/materialize.css">
 	<link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
        
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -39,8 +45,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--        end new style-->
         
-        <link rel="stylesheet" href="Style/materialize.css">
-         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+        
+         >
         
         <link rel="stylesheet" href="Style/indexModalStyle.css">
          <link rel="stylesheet" href="Style/indexstyle.css">
@@ -52,7 +58,7 @@
         </nav>
         <div class="container-fluid afternav">
         
-        <div class="row col-md-12">
+<!--        <div class="row col-md-2">-->
 <!--            <section class="col-xs-3">-->
                 <div id="myModal-confirm" class="modal">
                     <?php include 'Includes/ConfirmModal.php'; ?>
@@ -85,18 +91,21 @@
                   <?php 
                   include 'Includes/CategoryModify_modal.php';?>
                    </div>
-                </div>
+                
                  <div id="myModal-adduser" class="modal">
 
                    
                     <?php include 'Includes/createuseraccount.php'; ?>
                </div>
             <!--</section>-->
-            <div class="col-md-1 col-lg-1"></div> 
+<!--            </div>-->
+            <div class="row col-md-1 col-lg-1"></div>
             <div class="row col-md-10 col-lg-10 mytable">
                 <?php 
+//                if(isset($_GET['dashboard'])){
                      include "Includes/dashboard.php";
-                    
+//                }
+//                    
                       ?>
             </div>
             <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
@@ -132,11 +141,10 @@
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
+       <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+       <script src='dist/jspdf.min.js'></script>
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
-        <script src="JavaScript/ItemList.js"></script>
-
-
-       
+        <script src="JavaScript/ItemList.js"></script>       
         
 </html>

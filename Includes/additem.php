@@ -3,8 +3,8 @@
         <span class="close2">&times;</span>
         <h3 class="card-title text-primary text-left mb-5 mt-4">Add item</h3> 
         <div class="form-inline">
-          <input type="radio" name="addoption" class="form-control itemradio" value="add" checked="checked">Add
-          <input type="radio" name="addoption" class="form-control itemradio" value="import">Import
+          <input type="radio" name="addoption" class="form-control itemradio" value="import" checked="checked">Add
+          <input type="radio" name="addoption" class="form-control itemradio" value="import">Import csv file
         </div>
         <div class="tohide">
         <input type="text" name="itemId" placeholder="Id" class="form-control">

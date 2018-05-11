@@ -1,3 +1,42 @@
+<?php 
+ session_start();
+ include 'connection/db_connection.php';
+ include 'Includes_action_client_server/login.php';
+ include 'Includes_action_client_server/insertdata.php';
+ include 'Includes_action_client_server/createuseraccount.php';
+//DASHBOARD ACTION
+ $username = $_SESSION['user'];
+ $table_category = $_SESSION['user']."_category";
+    $categoryList = "SELECT * FROM ".$table_category;
+    $Executecategory = mysqli_query($conn, $categoryList);
+    $rowcount=mysqli_num_rows($Executecategory);
+    
+ $table_item = $_SESSION['user']."_item";
+    $ItemList = "SELECT * FROM ".$table_item;
+    $ExecuteItem = mysqli_query($conn, $ItemList);
+    $rowcount_item=mysqli_num_rows($ExecuteItem);
+    
+  $table_stock = $_SESSION['user']."_stock";
+    $stockList = "SELECT * FROM ".$table_stock;
+    $Executestock = mysqli_query($conn, $stockList);
+    $rowcount_stock=mysqli_num_rows($Executestock);
+    
+    $table_code= $_SESSION['user']."_billcode";
+    $querycode = "SELECT code FROM ".$table_code." LIMIT 1";
+    $resultcode = mysqli_fetch_assoc(mysqli_query($conn,$querycode));
+    $code = $resultcode['code'];
+    
+    $queryinfo = "SELECT * FROM clients_account WHERE username ='$username'";
+    $resultinfo = mysqli_fetch_assoc(mysqli_query($conn, $queryinfo));
+    $company = $resultinfo['company'];
+    $mobile = $resultinfo['mobile'];
+    $email = $resultinfo['email'];
+    
+
+ 
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,89 +44,33 @@
         <title>Business Management</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--	<link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
-        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="Style/materialize.css">
+	<link href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+       
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">-->
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+<!--         <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+<!--         new link-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="Style/indexstyle.css">
-        <link rel="stylesheet" href="Style/loginstyle.css">
+       <link rel="stylesheet" href="Style/indexModalStyle.css">
+        
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top mynav">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>
-        			<span class="icon-bar"></span>                        
-      		    </button>
-                            
-                <a class="navbar-brand" href="index.php"><h2>Business Management</h2></a>
-			</div>
-                    <div class="mybtn"><button id="myBtn">Connect</button></div>
-                    <div class="menu">
-                        <?php include 'includes/menubar.php'; ?>
-                    </div>
-			
-                </div>
-       </div>
-       <div class="container-fluid afternav">
-                    <h3 class="text-primary mb-4">Dashboard</h3>
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-success">7874</h4>
-                                    <p class="card-text">Stock Available</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                            aria-valuemax="100">75%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-info">75632</h4>
-                                    <p class="card-text ">Items sold</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-                                            aria-valuemax="100">40%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-warning">2156</h4>
-                                    <p class="card-text">Items Ordered</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">25%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h4 class="card-title font-weight-normal text-danger">89623</h4>
-                                    <p class="card-text">our Items</p>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-                                            aria-valuemax="100">65%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-       </div>
+        <button id="bill">edit bill</button><br>
+        <button id="back">Go to profile</button>
                    <!-- all Modal content --> 
                  <div class="row">
             <section class="col-xs-3">
-<!--                 The Modal -->
+                <div id="myModal-billing" class="modal">
+                    <?php include 'Includes/billing_modal.php'; ?>
+                </div>
                 <div id="myModal-login" class="modal">
 
 <!--                   Modal content -->
@@ -118,10 +101,160 @@
         <script type="text/javascript"
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
-        
-        <script src="JavaScript/loginpage.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
+       <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+       <script src='dist/jspdf.min.js'></script>
+       <script src="JavaScript/billing.js"></script>
        
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var subtotal =0;
+        var countrows =0;
+        var tableDesign = ` <tr class="new">
+                <td><input value="" class="nb"></td>
+                <td>
+                    <select name="designation"  class="form-control designation">
+                    <option value="0">Select item's</option>
+                    <?php
+                        $table = $_SESSION['user']."_item";
+                        $table1 = $_SESSION['user']."_stock";
+                        $select_item = "SELECT ".$table.".item_name, ".$table.".price FROM ".$table.",".$table1." "
+                                . "WHERE ".$table.".item_name = ".$table1.".item_name";
+                        $resultselect = mysqli_query($conn, $select_item);
+                        while($getdata = mysqli_fetch_array($resultselect)){
+                    ?>
+                    <option value="<?php echo $getdata['price'];?>"><?php echo $getdata['item_name'];?></option>
+                    <?php  }?>
+                </select>
+                 <input value="" class="item hidden">           
+                </td>
+                <td><input value="1" class="qt"></td>
+                <td><input value="0.0" class="price" readonly="readonly"></td>
+                <td><input value="0" class="disc"></td>
+                <td><input value="0.0" class="totalprice" readonly="readonly"></td>            
+                </tr>`;
+     $("#addrow").click(function(){
+       $("#billtable").append(tableDesign);
+        countrows = $("#billtable tr").length;
+        $("#billtable .new").attr("class","row_"+countrows);
+        $(".row_"+countrows+" .nb").val(countrows);      
+        var i = countrows;
+        $(".row_"+i).on('change','.designation',function(){
+            $(".row_"+i+" .item").removeClass('hidden');
+            var item =  $(".row_"+i+" .designation option:selected").text();
+            $(".row_"+i+" .item").val(item);
+            $(".row_"+i+" .designation").addClass('hidden');
+            var price = $(this).val();
+            var disc =  $(".row_"+i+" .disc").val();
+            $(".row_"+i+" .price").val(price);
+            var qt =  $(".row_"+i+" .qt").val();
+            var total = (price * qt)-(price * qt*disc)/100;
+            $(".row_"+i+" .totalprice").val(total.toFixed(2));
+            for(var j=0; j<countrows; j++){
+            var data = document.getElementById("billtable").rows[j].cells;
+            subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+        } 
+            $(".subtotal").val(subtotal.toFixed(2));
+            $(".total").val(subtotal.toFixed(2));
+            subtotal =0;
+    });
+    $("row_"+i).on('change','.item', function(){
+        $(".row_"+i+" .item").addClass('hidden');
+        $(".row_"+i+" .designation").removeClass('hidden');
+    })
+                
+    $(".row_"+i).on('change','.qt', function(){
+        var price =  $(".row_"+i+" .price").val();
+        var disc =  $(".row_"+i+" .disc").val();
+        var qt =  $(".row_"+i+" .qt").val();
+        var total = (price * qt)-(price*qt*disc)/100;
+        $(".row_"+i+" .totalprice").val(total.toFixed(2));
+
+        for(var j=0; j<countrows; j++){
+        var data = document.getElementById("billtable").rows[j].cells;
+        subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+    }
+        $(".subtotal").val(subtotal.toFixed(2));
+        $(".total").val(subtotal.toFixed(2));
+        subtotal =0;
+    });
+                
+    $(".row_"+i).on('change','.disc', function(){
+       var disc =  $(".row_"+i+" .disc").val();
+       var price = $(".row_"+i+" .price").val();
+       var qt =  $(".row_"+i+" .qt").val();
+       var total = (price*qt)-(price*qt*disc)/100;
+       $(".row_"+i+" .totalprice").val(total.toFixed(2));
+
+       for(var j=0; j<countrows; j++){
+        var data = document.getElementById("billtable").rows[j].cells;
+        subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+    }
+    $(".subtotal").val(subtotal.toFixed(2));
+    $(".total").val(subtotal.toFixed(2));
+    subtotal =0;
+    });         
+  
+  });
+     $(".tax").on('change',function(){
+     var tax = $(this).val();
+     var partial = $(".subtotal").val();
+     tax = parseFloat(tax,10)*parseFloat(partial,10)/100;
+     $(".totaltax").val(tax.toFixed(2));
+     var amount = tax + parseFloat(partial,10);
+     $(".total").val(amount.toFixed(2));
+
+     });
+     var btnbill = document.getElementById("bill");
+    var modal_billing = document.getElementById('myModal-billing');
+    var spancategory = document.getElementsByClassName("close1")[0];
+
+
+    btnbill.onclick = function() {
+    modal_billing.style.display = "block";
+    }
+    spancategory.onclick = function(){
+         modal_billing.style.display = "none";
+         }
+    $("#back").click(function(){
+        window.location.replace("http://localhost/business-management-master/index.php");
+    })
+    $('.modal-content').resizable({
+    //alsoResize: ".modal-dialog",
+    minHeight: 300,
+    minWidth: 300
+    });
+      
+    var print = document.getElementById("printable");
+    print.onclick = function () {
+    printElement(document.getElementById("invoice"));
+}
+
+    function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+    
+    var $printSection = document.getElementById("printSection");
+    
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+    
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    modal_billing.style.display = "none";
+    $("#bill").addClass('hidden');
+    $("#back").addClass('hidden');
+    window.print();
+    $("#bill").removeClass('hidden');
+    $("#back").removeClass('hidden');
+//    window.location.replace("http://localhost/business-management-master/index.php");
+    }
+});
+            
+</script> 
 </html>
 
 
