@@ -49,8 +49,8 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-adjust"></span>Modify</a></li>
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-list"></span>List</a></li>
+                        <li><a id="stockList" class="dropdown-item" href="#"><span class="glyphicon glyphicon-adjust"></span>List</a></li>
+                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-list"></span>Action</a></li>
                     </ul>
                 </div>
                 <div class="card-block">

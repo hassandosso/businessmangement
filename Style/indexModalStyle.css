@@ -1,8 +1,8 @@
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: fixed;  /*Stay in place*/ 
+    z-index: 1;  /*Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -23,14 +23,17 @@
     
    
 }
-.modal-content input {
+.modal-content input[type='text'] {
 	margin-bottom: 20px;
         width: 100%;
+}
+.modal-dialog{
+    width: 70%;
 }
 
 
 /* The Close Button */
-.close1, .close2, .close3, .close4, .close5 {
+.close1, .close2, .close3, .close4, .close5, .toggleModal {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -45,7 +48,9 @@
 .close4:hover,
 .close4:focus,
 .close5:hover,
-.close5:focus{
+.close5:focus,
+.toggleModal:hover,
+.toggleModal:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;

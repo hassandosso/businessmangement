@@ -63,8 +63,8 @@
      "item_name VARCHAR(100) NOT NULL, ".
      "initial_number INT NOT NULL, ".
      "entry_date date, ".
-     "actuel_number INT, ".
-     "out_date date, ".
+     "actual_number INT, ".
+     "out_date date DEFAULT NULL, ".
      "CONSTRAINT PK_".$stock." PRIMARY KEY (id,stock_id)".
      ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
@@ -79,8 +79,7 @@
      "final_price DOUBLE NOT NULL, ".
      "item_name VARCHAR(100) NOT NULL, ".
      "bill_date date DEFAULT NULL, ".
-     "customer VARCHAR(100) NOT NULL, ".
-     "bill_no INT NOT NULL, ".
+     "customer VARCHAR(100) DEFAULT NULL, ".
      "CONSTRAINT PK_".$billing." PRIMARY KEY (id,bill_id)".
      ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
@@ -93,8 +92,9 @@
     "id INT NOT NULL AUTO_INCREMENT, ". 
     "customer_id VARCHAR(20) NOT NULL, ".
      "customer_name VARCHAR(100) NOT NULL, ".
-     "customer_contact VARCHAR(100) NOT NULL, ".
-     "customer_address VARCHAR(100) NOT NULL, ".
+     "customer_contact VARCHAR(100) DEFAULT NULL, ".
+     "customer_email VARCHAR(100) DEFAULT NULL, ".
+     "customer_address VARCHAR(100) DEFAULT NULL, ".
      "CONSTRAINT PK_".$customer." PRIMARY KEY (id,customer_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     
@@ -155,12 +155,10 @@
  else {
                $Insert_user = "INSERT INTO ".$user_account." (fullname, username, password, role) VALUES('$fullname', '$username', '$passwordencrypted', 'admin')";
                $result_user = mysqli_query($conn, $Insert_user);
-               
-             $alter_flow ="ALTER TABLE hassan_flow ADD FOREIGN KEY (stockid) REFERENCES hassan_stock(stock_id);";
              //$flowresult = mysqli_query($conn, $alter_flow);
                //if($flowresult)
                //{
-                  echo 'Account creates with success! click on login to acces you profile';
+                  echo 'Account creates with success! click on login to acces your profile';
                //} else {
                    //$error = die(mysqli_error($conn));
                       //echo $error;

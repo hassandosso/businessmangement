@@ -1,16 +1,19 @@
 $(document).ready(function(){
 // Get the modal
+var closemodal = document.getElementsByClassName("closemodal");
 var modal_cat = document.getElementById('myModal-category');
 var modal_item = document.getElementById('myModal-item');
 var modal_newstock = document.getElementById('myModal-newStock');
 var modal_adduser = document.getElementById('myModal-adduser');
+var modal_codebill = document.getElementById('myModal-toggle');
 
 // Get the button that opens the modal
 var btncategory = document.getElementById("addcategory");
 var btnitem = document.getElementById("additem");
 var btnnewstock = document.getElementById("newstock");
 var btnadduser = document.getElementById("adduser");
-
+var btnCodeBill = document.getElementById("billcode");
+var btnCustomer = document.getElementById("customer");
 
 
 // Get the <span> element that closes the modal
@@ -19,6 +22,7 @@ var spancategory = document.getElementsByClassName("close1")[0];
 var spanitem = document.getElementsByClassName("close2")[0];
 var spannewstock = document.getElementsByClassName("close3")[0];
 var spanadduser = document.getElementsByClassName("close4")[0];
+var toggle = document.getElementsByClassName("toggleModal")[0];
 // When the user clicks the button, open the modal 
 
 btncategory.onclick = function() {
@@ -50,6 +54,17 @@ btnadduser.onclick = function() {
 
 }
 
+btnCodeBill.onclick = function(){
+    modal_codebill.style.display = "block"; 
+    $(".codebill").removeClass('hidden');
+    $(".customer").addClass('hidden');
+}
+btnCustomer.onclick = function(){
+    modal_codebill.style.display = "block"; 
+    $(".customer").removeClass('hidden');
+    $(".codebill").addClass('hidden');
+}
+
 // When the user clicks on <span> (x), close the modal
 spancategory.onclick = function(){
      modal_cat.style.display = "none";
@@ -57,12 +72,17 @@ spancategory.onclick = function(){
 
 spanitem.onclick = function(){
     modal_item.style.display = "none";
+
 }
 spannewstock.onclick = function(){
     modal_newstock.style.display = "none";
+//$(this).style.display = "none";
 }
 spanadduser.onclick = function() {
     modal_adduser.style.display = "none";
+}
+toggle.onclick = function(){
+    modal_codebill.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -85,6 +105,14 @@ $('.modal-content').resizable({
       //alsoResize: ".modal-dialog",
       minHeight: 300,
       minWidth: 300
+    });
+    
+  $('.modal-dialog').draggable();
+
+    $('.myModal').on('show.bs.modal', function() {
+      $(this).find('.modal-body').css({
+        'max-height': '100%'
+      });
     });
 //CATEGORY MODIFICATION AJAX
 $(".mytable").on('click','.edit',function(){

@@ -115,7 +115,7 @@ if(isset($_POST['savestock'])){
             . "VALUES('$stock_id', '$item', '$item_number', '$date','$item_number')";
     $insert_execute = mysqli_query($conn, $insert_query);
     if(!$insert_execute){
-        
+        die(mysqli_error($conn));
         $error = mysqli_error($conn);
         if(preg_match("/duplicate entry/i", $error)){
              echo '<script>alert("stock already exist")</script>';
@@ -162,4 +162,21 @@ if(isset($_POST['modifitem'])){
         echo '<script>alert("'.$error.'")</script>';
     }
     
+}
+//TOGGLE BUTTON ACTION
+
+//INSERT CUTOMER INFO
+if(isset($_POST['customer'])){
+    $name = $_POST['customer_name'];
+    $contact = $_POST['customer_contact'];
+    $email = $_POST['customer_email'];
+    $address = $_POST['customer_address'];
+    $id = $name.$contact;
+    $insertCustomer = mysqli_query($conn,"INSERT INTO ".$table_customer." (customer_id, customer_name, customer_contact,"
+            . " customer_email, customer_address) VALUES('$id', '$name', '$contact', '$email', '$address') ");
+    if($insertCustomer){
+        echo "<script>alert('customer registered successfully!')</script>";
+    }else{
+        echo "<script>alert('customer may already exist!')</script>";
+    }
 }

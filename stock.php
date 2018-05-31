@@ -127,9 +127,10 @@
                     <option value="<?php echo $getdata['price'];?>"><?php echo $getdata['item_name'];?></option>
                     <?php  }?>
                 </select>
-                 <input value="" class="item hidden">           
+                 <input value="" class="item hidden">          
                 </td>
                 <td><input value="1" class="qt"></td>
+                <td><input value="0" class="tx"></td>
                 <td><input value="0.0" class="price" readonly="readonly"></td>
                 <td><input value="0" class="disc"></td>
                 <td><input value="0.0" class="totalprice" readonly="readonly"></td>            
@@ -153,13 +154,15 @@
             $(".row_"+i+" .totalprice").val(total.toFixed(2));
             for(var j=0; j<countrows; j++){
             var data = document.getElementById("billtable").rows[j].cells;
-            subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+            subtotal =parseFloat(data[6].children[0].value)+(parseFloat(subtotal));
         } 
+            var tax = $(".totaltax").val();
             $(".subtotal").val(subtotal.toFixed(2));
+            subtotal = parseFloat(subtotal) + parseFloat(tax);
             $(".total").val(subtotal.toFixed(2));
             subtotal =0;
     });
-    $("row_"+i).on('change','.item', function(){
+    $(".row_"+i).on('click','.item', function(){
         $(".row_"+i+" .item").addClass('hidden');
         $(".row_"+i+" .designation").removeClass('hidden');
     })
@@ -173,9 +176,11 @@
 
         for(var j=0; j<countrows; j++){
         var data = document.getElementById("billtable").rows[j].cells;
-        subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+        subtotal =parseFloat(data[6].children[0].value)+(parseFloat(subtotal));
     }
+        var tax = $(".totaltax").val();
         $(".subtotal").val(subtotal.toFixed(2));
+         subtotal = parseFloat(subtotal,10) + parseFloat(tax,10);
         $(".total").val(subtotal.toFixed(2));
         subtotal =0;
     });
@@ -189,23 +194,64 @@
 
        for(var j=0; j<countrows; j++){
         var data = document.getElementById("billtable").rows[j].cells;
-        subtotal =parseFloat(data[5].children[0].value,10)+(parseFloat(subtotal,10));
+        subtotal =parseFloat(data[6].children[0].value)+(parseFloat(subtotal));
     }
+    var tax = $(".totaltax").val();
     $(".subtotal").val(subtotal.toFixed(2));
+    subtotal = parseFloat(subtotal) + parseFloat(tax);
     $(".total").val(subtotal.toFixed(2));
     subtotal =0;
-    });         
+    });
+    
+     $(".row_"+i).on('change','.tx', function(){
+         var unittax=0;
+         for(var t=0; t<countrows; t++){
+        var data = document.getElementById("billtable").rows[t].cells;
+        unittax =parseFloat(data[3].children[0].value)+(parseFloat(unittax));
+    } 
+         $(".tax").val(parseInt(unittax));
+//         var totaltax = $(".tax").val();
+         var partial = $(".subtotal").val();
+        var totaltax =  parseFloat(unittax)*parseFloat(partial)/100;
+         $(".totaltax").val(totaltax.toFixed(2));
+         var amount = totaltax + parseFloat(partial);
+        $(".total").val(amount.toFixed(2));
+     });
+      $(".del").removeClass("hidden");
   
   });
-     $(".tax").on('change',function(){
-     var tax = $(this).val();
-     var partial = $(".subtotal").val();
-     tax = parseFloat(tax,10)*parseFloat(partial,10)/100;
-     $(".totaltax").val(tax.toFixed(2));
-     var amount = tax + parseFloat(partial,10);
-     $(".total").val(amount.toFixed(2));
-
-     });
+  
+ //delete row logic 
+  $("#deleterow").click(function(){
+  var unittax=0;
+  var subtotal =0;
+  var len = $("#billtable tr").length;
+  console.log(len);
+  $(".row_"+len).remove();
+  if(len-1>0){
+  for(var j=0; j<len-1; j++){
+        var data = document.getElementById("billtable").rows[j].cells;
+        subtotal =parseFloat(data[6].children[0].value)+(parseFloat(subtotal));
+        unittax =parseInt(data[3].children[0].value)+(parseInt(unittax));
+    }
+    $(".tax").val(parseInt(unittax));
+    $(".subtotal").val(subtotal.toFixed(2));
+    var partial = $(".subtotal").val();
+    var totaltax =  parseFloat(unittax)*parseFloat(partial)/100;
+    $(".totaltax").val(totaltax.toFixed(2));
+    var amount = totaltax + parseFloat(partial);
+    $(".total").val(amount.toFixed(2));
+    }
+    else{
+        $(".tax").val(0);
+        $(".subtotal").val(parseFloat(0.0));
+        $(".totaltax").val(parseFloat(0.0));
+        $(".total").val(parseFloat(0.0));
+    }
+  if(len-1==0){
+      $(".del").addClass("hidden");
+  }
+  });
      var btnbill = document.getElementById("bill");
     var modal_billing = document.getElementById('myModal-billing');
     var spancategory = document.getElementsByClassName("close1")[0];
@@ -250,7 +296,7 @@
     window.print();
     $("#bill").removeClass('hidden');
     $("#back").removeClass('hidden');
-//    window.location.replace("http://localhost/business-management-master/index.php");
+    window.location.replace("http://localhost/business-management-master/index.php");
     }
 });
             

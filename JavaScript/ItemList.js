@@ -6,7 +6,7 @@ var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-item' data-criteria='category' placeholder='Search by category..' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <input type='text' class='myInput-item' data-criteria='price' placeholder='Search by price..' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <table width='100%' id='item_table' class='table table-striped table-bordered' style='width:100%;'>\n\
-    <thead>\n\
+    <thead style='background-color: black; color: white;'>\n\
         <tr>\n\
             <th>Item id</th>\n\
             <th>Item Name</th>\n\
@@ -178,6 +178,7 @@ $(".mytable").on('click','#but_next_item',function(){
    //SEARCH FUNCTION
    $(".mytable").on('keyup','.myInput-item',function(){
        start = 0;
+       searchdata = [];
        lastline = rowperpage - 1;
       filter_criteria = $(this).data('criteria');
       console.log(filter_criteria);
@@ -185,8 +186,14 @@ $(".mytable").on('click','#but_next_item',function(){
       filter = filter.toUpperCase();
       console.log(filter);
       var count =0, j=0;
+      var name;
       for(var i=0; i<alldata.length; i++){
-          var name = alldata[i]['name'];
+          if(filter_criteria ==='name')
+             name = alldata[i]['name'];
+          else if(filter_criteria ==='category')
+              name = alldata[i]['category'];
+          else if(filter_criteria ==='price')
+              name = alldata[i]['price'];
           if(name.toUpperCase().indexOf(filter) > -1){
               count++;
               searchdata[j] =alldata[i];
@@ -195,12 +202,12 @@ $(".mytable").on('click','#but_next_item',function(){
       }
       if(lastline >= searchdata.length)
           lastline = searchdata.length -1;
-      
      searchTablerow(searchdata, lastline,start, filter,filter_criteria);
      createPageNumber(rowperpage,count);
      if(filter ==''){
          start = 0;
          lastline = rowperpage -1;
+         searchdata = [];
      }
      
    });
@@ -228,7 +235,7 @@ function createTablerow(data, perpage,start){
                 var category = data[i]['category'];
                 var price = data[i]['price'];
                 if(filter_criteria==='name'){
-                if(itemname.toUpperCase().indexOf(filter)> -1)
+                if(itemname.toUpperCase().indexOf(filter) > -1)
                 {
                         $("#tbody_item").append("<tr><td>"+itemid+"</td><td>"+itemname+"</td><td>"+category+"</td><td>"+price+"</td>\n\
                                     <td style='width: 150px; text-align: center'>\n\
@@ -237,7 +244,7 @@ function createTablerow(data, perpage,start){
                     }
                 }
                 else if(filter_criteria==='category'){
-                    if(category.toUpperCase().indexOf(filter)> -1)
+                    if(category.toUpperCase().indexOf(filter) > -1)
                     {
                         $("#tbody_item").append("<tr><td>"+itemid+"</td><td>"+itemname+"</td><td>"+category+"</td><td>"+price+"</td>\n\
                                     <td style='width: 150px; text-align: center'>\n\
@@ -246,7 +253,7 @@ function createTablerow(data, perpage,start){
                     }
                 }
                 else if(filter_criteria==='price'){
-                    if(price.toUpperCase().indexOf(filter)> -1)
+                    if(price.toUpperCase().indexOf(filter) > -1)
                     {
                         $("#tbody_item").append("<tr><td>"+itemid+"</td><td>"+itemname+"</td><td>"+category+"</td><td>"+price+"</td>\n\
                                     <td style='width: 150px; text-align: center'>\n\

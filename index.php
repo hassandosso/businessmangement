@@ -45,12 +45,10 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--        end new style-->
         
-        
-         >
-        
         <link rel="stylesheet" href="Style/indexModalStyle.css">
          <link rel="stylesheet" href="Style/indexstyle.css">
-       
+         
+      
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top barnav">
@@ -58,15 +56,15 @@
         </nav>
         <div class="container-fluid afternav">
         
-<!--        <div class="row col-md-2">-->
+        <div class="myModal">
+            <div id="myModal-toggle" class="modal closemodal">
+                    <?php include 'Includes/toggleaction/toggle_modal.php'; ?>
+               </div>
 <!--            <section class="col-xs-3">-->
                 <div id="myModal-confirm" class="modal">
                     <?php include 'Includes/ConfirmModal.php'; ?>
                </div>
                <div id="myModal-login" class="modal">
-               
-                
-                   
                     <?php include 'Includes/loginpage.php'; ?>
              </div>
                 <div id="myModal-category" class="modal" >
@@ -75,7 +73,7 @@
                     <?php include 'Includes/addcategory.php'; ?>
                 </div>
                 
-                <div id="myModal-item" class="modal">
+                <div id="myModal-item" class="modal closemodal">
 
 <!--                   Modal content -->
                     <?php include 'Includes/additem.php'; ?>
@@ -98,7 +96,7 @@
                     <?php include 'Includes/createuseraccount.php'; ?>
                </div>
             <!--</section>-->
-<!--            </div>-->
+            </div>
             <div class="row col-md-1 col-lg-1"></div>
             <div class="row col-md-10 col-lg-10 mytable">
                 <?php 
@@ -107,7 +105,15 @@
 //                }
 //                    
                       ?>
+                <span class="btn btn-primary btnchart">Chart</span>
+                <!--Div that will hold the dashboard-->
+                <div id="dashboard_div" >
+                  <!--Divs that will hold each control and chart-->
+                  <div id="filter_div"></div>
+                  <div id="chart_div" style="width: 60%;"></div>
+                </div>
             </div>
+            
             <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
       <a class="btn-floating btn-large pink waves-effect waves-light">
         <i class="large material-icons">add</i>
@@ -145,6 +151,69 @@
        <script src='dist/jspdf.min.js'></script>
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
-        <script src="JavaScript/ItemList.js"></script>       
-        
+        <script src="JavaScript/ItemList.js"></script> 
+        <script src="JavaScript/StockList.js"></script> 
+        <script src="JavaScript/toggle_action.js"></script>  
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <!--<script type="text/javascript">-->
+        <script>
+        $(document).ready(function(){
+          $(".btnchart").click(function(){
+                    var value = 'flow';
+                 $.ajax({
+            url:'Includes/charts.php',
+            type:'post',
+            data:{db: value},
+            dataType:'json',
+            success:function(value){
+                response = JSON.stringify(value);
+               
+              google.charts.load('current', {'packages':['corechart', 'controls']});
+              google.charts.setOnLoadCallback(drawDashboard(value));
+              
+              function drawDashboard(value) {
+                  var data = new google.visualization.DataTable();
+                  data.addColumn('string', 'name');
+                  data.addColumn('number',   'count');
+                  for(var i=0; i<value.length; i++){
+                      data.addRow([value[i].name,parseInt(value[i].count)]);
+                  }
+                  var dashboard = new google.visualization.Dashboard(
+                      document.getElementById('dashboard_div'));
+              
+              // Create a range slider, passing some options
+                var donutRangeSlider = new google.visualization.ControlWrapper({
+                  'controlType': 'NumberRangeFilter',
+                  'containerId': 'filter_div',
+                  'options': {
+                    'filterColumnLabel': 'count'
+                  }
+                });
+                
+                // Create a pie chart, passing some options
+                    var pieChart = new google.visualization.ChartWrapper({
+                      'chartType': 'PieChart',
+                      'containerId': 'chart_div',
+                      'options': {
+                        'width': 700,
+                        'height': 300,
+                        'pieSliceText': 'value',
+                        'legend': 'right'
+                      }
+                    });
+                    dashboard.bind(donutRangeSlider, pieChart);
+
+                    // Draw the dashboard.
+                    console.log('this is data:'+data);
+                    dashboard.draw(data);
+                    }
+              },
+            error:function(response){
+                console.log(response);
+                
+            }
+             });
+           });
+         });
+        </script>
 </html>

@@ -35,7 +35,7 @@ ul, li ul{
     
     padding-bottom: 0px !important;
 }
-.myInput-item, #myInput{
+.myInput-item,.myInput-stock,.date-stock, #myInput{
     width: 20%!important;
 }
 

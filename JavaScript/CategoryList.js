@@ -4,7 +4,7 @@ $(document).ready(function(){
 var tableDesign = " <div id='content'>\n\
 <input type='text' id='myInput' placeholder='Search for names..' style='margin-bottom: 5px;'>\n\
 <table width='100%' id='emp_table' class='table table-striped table-bordered' style='width:100%;'>\n\
-    <thead>\n\
+    <thead style='background-color: black; color: white;'>\n\
         <tr>\n\
             <th>Category id</th>\n\
             <th>Category Name</th>\n\
@@ -28,7 +28,7 @@ var btn_next;
 var rowperpage = 10;
 var lastline = rowperpage-1;
 var alldata;
-var start = 0, searchdata =[];;
+var start = 0, searchdata =[];
 var filter ='';
 //GET ALL DATA FROM DATABASE AND DISPLAY THE FIRST 10 CONTENTS;
 $("#catlist").click(function(){
@@ -168,6 +168,7 @@ $(".mytable").on('click','#but_next',function(){
    //SEARCH FUNCTION
    $(".mytable").on('keyup','#myInput',function(){
        start = 0;
+       searchdata =[];
        lastline = rowperpage - 1;
       filter = $("#myInput").val();
       filter = filter.toUpperCase();
@@ -186,8 +187,9 @@ $(".mytable").on('click','#but_next',function(){
       
      searchTablerow(searchdata, lastline,start, filter);
      createPageNumber(rowperpage,count);
-     if(filter ==''){
+     if(filter ===''){
          start = 0;
+         searchdata =[];
          lastline = rowperpage -1;
      }
      
