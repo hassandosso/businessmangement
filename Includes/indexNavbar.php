@@ -8,17 +8,15 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-shopping-cart"></span>
                                     Items<span class="caret"></span></a>
                                         <ul class="dropdown-menu undermenu">
-                                            <li><button id="addcategory" class="btn btn-danger btn-block">Add Category</button></li>
-                                            <li><button id="additem" class="btn btn-danger btn-block">Add Item</button></li>
-<!--                                            <li><a href="index.php?category=category" id="listitems" class="btn btn-danger btn-block">List Items</a></li>-->
+                                            <li><a id="addcategory" class="btn btn-danger btn-block">Add Category</a></li>
+                                            <li><a id="additem" class="btn btn-danger btn-block">Add Item</a></li>
                                         </ul>
                          </li>
                         <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-floppy-save"></span>
                                     Stocks<span class="caret"></span></a>
                                 <ul class="dropdown-menu undermenu">
-                                    <li><button id="newstock" class="btn btn-danger btn-block">New stock</button></li>
-<!--                                    <li><button id="stockavalaible" class="btn btn-danger btn-block">Stock available</button></li>-->
+                                    <li><a id="newstock" class="btn btn-success">New stock</a></li>
                                 </ul>
                             </li>
                             <?php
@@ -28,15 +26,20 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-usd"></span>
                                     Account<span class="caret"></span></a>
                                 <ul class="dropdown-menu undermenu">
-                                    <li><button id="orderform" class="btn btn-danger btn-block">Order form</button></li>
-                                    <li><button id="deliveryorder" class="btn btn-danger btn-block">Delivery order</button></li>
-                                    <li><a href="stock.php"><button id="bill" class="btn btn-danger btn-block">Bill</button></a></li>
+                                    <li><a id="orderform" class="btn btn-danger btn-block">Order form</a></li>
+                                    <li><a id="deliveryorder" class="btn btn-danger btn-block">Delivery order</a></li>
+                                    <li><a href="stock.php" id="bill" class="btn btn-danger btn-block">Bill</a></li>
                                 </ul>
                             </li>  ';
                                 }
                             ?>
-                            <li>
-                                <a href="index.php?dashboard" class="dash"> <i class="menu-icon fa fa-dashboard "></i>Dashboard </a>
+                            <li class="dropdown" >
+                                
+                                <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-dashboard"></span>Dashboard<span class="caret"></span> </a>
+                                <ul class="dropdown-menu undermenu">
+                                    <li><a href="?boards" id="" class="btn btn-danger btn-block">boards</a></li>
+                                    <li><a href="?charts" id=""  class="btn btn-danger btn-block">charts</a></li>
+                                </ul>
                             </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -13,7 +13,7 @@ var tableDesign = " <div id='content'>\n\
     </thead>\n\
     <tbody id='tbody'></tbody>\n\
     <tfoot>\n\
-        <tr>\n\
+        <tr class='success'>\n\
             <th>Category id</th>\n\
             <th>Category Name</th>\n\
             <th style='width: 150px; text-align: center;'>Edit / Delete</th>\n\

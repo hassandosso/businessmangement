@@ -38,5 +38,9 @@ ul, li ul{
 .myInput-item,.myInput-stock,.date-stock, #myInput{
     width: 20%!important;
 }
+.chartContent{
+    margin-top: 40px;
+}
+
 
 

@@ -18,7 +18,7 @@ var tableDesign = "<div id='content'>\n\
     </thead>\n\
     <tbody id='tbody_stock'></tbody>\n\
     <tfoot>\n\
-        <tr>\n\
+        <tr class='success'>\n\
             <th>stock id</th>\n\
             <th>Item Name</th>\n\
             <th>Initial number</th>\n\

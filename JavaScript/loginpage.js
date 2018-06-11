@@ -1,6 +1,6 @@
 $(document).ready(function(){
 // Get the modal
-var closemodal = document.getElementsByClassName("closemodal");
+ var modif = document.getElementById("myModal-modif");
 var modal_cat = document.getElementById('myModal-category');
 var modal_item = document.getElementById('myModal-item');
 var modal_newstock = document.getElementById('myModal-newStock');
@@ -23,6 +23,7 @@ var spanitem = document.getElementsByClassName("close2")[0];
 var spannewstock = document.getElementsByClassName("close3")[0];
 var spanadduser = document.getElementsByClassName("close4")[0];
 var toggle = document.getElementsByClassName("toggleModal")[0];
+var spanModif = document.getElementsByClassName("close5")[0];
 // When the user clicks the button, open the modal 
 
 btncategory.onclick = function() {
@@ -84,22 +85,29 @@ spanadduser.onclick = function() {
 toggle.onclick = function(){
     modal_codebill.style.display = "none";
 }
+ spanModif.onclick = function(){
+     modif.style.display="none";
+    }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == modal_cat) {
+    if (event.target === modal_cat) {
         modal_cat.style.display = "none";
     }
-    if (event.target == modal_item) {
+    if (event.target === modal_item) {
         modal_item.style.display = "none";
     }
-    if (event.target == modal_newstock) {
+    if (event.target === modal_newstock) {
         modal_newstock.style.display = "none";
     }
     
-    if (event.target == modal_adduser) {
+    if (event.target === modal_adduser) {
         modal_adduser.style.display = "none";
     }
+    if (event.target === modif) {
+        modif.style.display = "none";
+    }
+            
 }
 $('.modal-content').resizable({
       //alsoResize: ".modal-dialog",
@@ -129,17 +137,10 @@ $(".mytable").on('click','.edit',function(){
            document.getElementById("Idcat").value = data[0];
            document.getElementById("catIdModif").value = data[1];
            document.getElementById("catNameModif").value = data[2];
-           var modif = document.getElementById("myModal-modif");
 //            var spanModif = document.getElementsByClassName("close5");
             modif.style.display="block";
-            spancategory.onclick = function(){
-                 modif.style.display = "none";
-            }
-            window.onclick = function(event) {
-            if (event.target == modif) {
-                modif.style.display = "none";
-            }
-            }
+           
+            
        }
        
     });
@@ -189,7 +190,7 @@ $(".itemradio").click(function(){
     
 });
 
-//    IMPORT OR ADD DIRECTLY CATEGORY CONTROL
+//    IMPORT OR ADD DIRECTLY CATEGORY 
 $(".catradio").click(function(){
   var  isSelected = $(this).val();
   console.log(isSelected);
@@ -212,30 +213,20 @@ $(".mytable").on('click','.edit-item',function(){
     $("#categoryModify").addClass('hidden');
     $("#itemModify").removeClass('hidden');
     var id = $(this).data('edititem');
+    console.log(id);
     $.ajax({
         type: "post",
        url:"Includes/ModifyItem.php",
        data: {iditem: id},
        dataType: "json",
        success: function(data){
-           console.log(JSON.stringify(data));
             document.getElementById("Iditem").value = data[0];
            document.getElementById("itemIdModif").value = data[1];
            document.getElementById("itemNameModif").value = data[2];
            $('select option[0]').innerHTML = data[3];
            $('select option[0]').value = data[3];
            document.getElementById("itemPriceModif").value = data[4];
-           var modif = document.getElementById("myModal-modif");
-//            var spanModif = document.getElementsByClassName("close5");
             modif.style.display="block";
-//            spanModif.onclick = function(){
-//                modif.style.display="none";
-//            }
-            window.onclick = function(event) {
-            if (event.target === modif) {
-                modif.style.display = "none";
-            }
-            }
        },
        error:function(data){
            console.log(data);

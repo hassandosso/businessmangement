@@ -100,18 +100,15 @@
             <div class="row col-md-1 col-lg-1"></div>
             <div class="row col-md-10 col-lg-10 mytable">
                 <?php 
-//                if(isset($_GET['dashboard'])){
+                if(isset($_GET['boards'])){
                      include "Includes/dashboard.php";
-//                }
+                }
+                if(isset($_GET['charts'])){
+                    include "Includes/chartsDesign.php";
+                }
 //                    
                       ?>
-                <span class="btn btn-primary btnchart">Chart</span>
-                <!--Div that will hold the dashboard-->
-                <div id="dashboard_div" >
-                  <!--Divs that will hold each control and chart-->
-                  <div id="filter_div"></div>
-                  <div id="chart_div" style="width: 60%;"></div>
-                </div>
+                
             </div>
             
             <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
@@ -154,66 +151,10 @@
         <script src="JavaScript/ItemList.js"></script> 
         <script src="JavaScript/StockList.js"></script> 
         <script src="JavaScript/toggle_action.js"></script>  
-         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <!--<script type="text/javascript">-->
+         <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
+         <script src="JavaScript/onlineScript/googleCharts.js"></script>
+         <script src="JavaScript/charts.js"></script>
         <script>
-        $(document).ready(function(){
-          $(".btnchart").click(function(){
-                    var value = 'flow';
-                 $.ajax({
-            url:'Includes/charts.php',
-            type:'post',
-            data:{db: value},
-            dataType:'json',
-            success:function(value){
-                response = JSON.stringify(value);
-               
-              google.charts.load('current', {'packages':['corechart', 'controls']});
-              google.charts.setOnLoadCallback(drawDashboard(value));
-              
-              function drawDashboard(value) {
-                  var data = new google.visualization.DataTable();
-                  data.addColumn('string', 'name');
-                  data.addColumn('number',   'count');
-                  for(var i=0; i<value.length; i++){
-                      data.addRow([value[i].name,parseInt(value[i].count)]);
-                  }
-                  var dashboard = new google.visualization.Dashboard(
-                      document.getElementById('dashboard_div'));
-              
-              // Create a range slider, passing some options
-                var donutRangeSlider = new google.visualization.ControlWrapper({
-                  'controlType': 'NumberRangeFilter',
-                  'containerId': 'filter_div',
-                  'options': {
-                    'filterColumnLabel': 'count'
-                  }
-                });
-                
-                // Create a pie chart, passing some options
-                    var pieChart = new google.visualization.ChartWrapper({
-                      'chartType': 'PieChart',
-                      'containerId': 'chart_div',
-                      'options': {
-                        'width': 700,
-                        'height': 300,
-                        'pieSliceText': 'value',
-                        'legend': 'right'
-                      }
-                    });
-                    dashboard.bind(donutRangeSlider, pieChart);
-
-                    // Draw the dashboard.
-                    console.log('this is data:'+data);
-                    dashboard.draw(data);
-                    }
-              },
-            error:function(response){
-                console.log(response);
-                
-            }
-             });
-           });
-         });
+        
         </script>
 </html>

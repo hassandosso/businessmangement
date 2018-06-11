@@ -17,7 +17,7 @@ var tableDesign = "<div id='content'>\n\
     </thead>\n\
     <tbody id='tbody_item'></tbody>\n\
     <tfoot>\n\
-        <tr>\n\
+        <tr class='success'>\n\
             <th>Item id</th>\n\
             <th>Item Name</th>\n\
             <th>category</th>\n\
