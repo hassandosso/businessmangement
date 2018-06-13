@@ -16,7 +16,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-floppy-save"></span>
                                     Stocks<span class="caret"></span></a>
                                 <ul class="dropdown-menu undermenu">
-                                    <li><a id="newstock" class="btn btn-success">New stock</a></li>
+                                    <li><a id="newstock" class="btn btn-danger">New stock</a></li>
                                 </ul>
                             </li>
                             <?php
@@ -26,9 +26,9 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-usd"></span>
                                     Account<span class="caret"></span></a>
                                 <ul class="dropdown-menu undermenu">
-                                    <li><a id="orderform" class="btn btn-danger btn-block">Order form</a></li>
-                                    <li><a id="deliveryorder" class="btn btn-danger btn-block">Delivery order</a></li>
-                                    <li><a href="stock.php" id="bill" class="btn btn-danger btn-block">Bill</a></li>
+                                    <li><a id="orderform" class="btn btn-info btn-block">Order form</a></li>
+                                    <li><a id="deliveryorder" class="btn btn-info btn-block">Delivery order</a></li>
+                                    <li><a href="stock.php" id="bill" class="btn btn-info btn-block">Bill</a></li>
                                 </ul>
                             </li>  ';
                                 }
@@ -37,8 +37,8 @@
                                 
                                 <a class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-dashboard"></span>Dashboard<span class="caret"></span> </a>
                                 <ul class="dropdown-menu undermenu">
-                                    <li><a href="?boards" id="" class="btn btn-danger btn-block">boards</a></li>
-                                    <li><a href="?charts" id=""  class="btn btn-danger btn-block">charts</a></li>
+                                    <li><a href="?boards" id="" class="btn btn-info btn-block"><i class="fa fa-table"></i>boards</a></li>
+                                    <li><a href="?charts" id=""  class="btn btn-info btn-block"><i class="fa fa-area-chart"></i>charts</a></li>
                                 </ul>
                             </li>
                     </ul>
@@ -49,7 +49,11 @@
                                     else if(isset ($_SESSION['user']) && isset ($_SESSION['subuser'])){
                                         echo $_SESSION['user']."@".$_SESSION['subuser'];}?><span class="caret"></span></a>
                                     <ul class="dropdown-menu undermenu">
-                                        <li><a href="#" id="adduser"><span class="glyphicon glyphicon-plus"></span>Add user</a></li>
+                                        <?php
+                                            if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){
+                                                echo '<li><a href="#" id="adduser"><span class="glyphicon glyphicon-plus"></span>Add user</a></li>';
+                                            }
+                                        ?>
                                         <li><a href="Includes_action_client_server/logout.php" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                                     </ul>
                         </li>

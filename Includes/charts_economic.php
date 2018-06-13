@@ -8,12 +8,12 @@ $table= $_SESSION['user']."_billing";
  $flow_arr = array();
  $info_arr = array();
 $query = "SELECT DATE_FORMAT(bill_date,'%Y/%c') AS month, quantity, "
-            . "item_name AS name FROM ".$table." WHERE item_name='$item' GROUP BY bill_date";
+            . "item_name AS name FROM ".$table." WHERE item_name='$item' GROUP BY month";
 
 $query1 = "SELECT SUM(total_price) as sold, SUM(discount) AS discounts, SUM(tax) AS taxes, DATE_FORMAT(bill_date,'%Y/%c')"
-            . " AS month FROM ".$table." WHERE item_name='$item' GROUP BY bill_date";
+            . " AS month FROM ".$table." WHERE item_name='$item' GROUP BY month";
 
-$query2 = "SELECT initial_number AS initial, actual_number AS actual FROM ".$stock." WHERE item_name = '$item'";
+$query2 = "SELECT initial_number AS initial, actual_number AS actual, stock_id, entry_date FROM ".$stock." WHERE item_name = '$item'";
 
 $result = mysqli_query($conn,$query);
 $result1 = mysqli_query($conn,$query1);
@@ -39,5 +39,5 @@ $result2 = mysqli_query($conn,$query2);
       }
       
       $row2 = mysqli_fetch_assoc($result2);
-      $info_arr[] = array($row2['initial'],$row2['actual']);
+      $info_arr[] = array($row2['initial'],$row2['actual'], $row2['stock_id'], $row2['entry_date']);
  echo ltrim(json_encode(array($item_arr, $flow_arr, $info_arr)), "\r\n");

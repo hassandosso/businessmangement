@@ -24,7 +24,6 @@ $(document).ready(function(){
             type:"post",
             data:{billinfo: jsondata,billno:billcode,client:customer},
             success: function(item){
-                console.log(item);
             },
             error:function(item){
                 console.log(item);

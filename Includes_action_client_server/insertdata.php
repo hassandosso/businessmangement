@@ -6,6 +6,7 @@ $table_stock = $_SESSION['user']."_stock";
 $table_billing = $_SESSION['user']."_billing";
 $table_billcode = $_SESSION['user']."_billcode";
 $table_customer = $_SESSION['user']."_customer";
+$table_flow = $_SESSION['user']."_flow";
 
 // INSERT CATEGORY
 if(isset($_POST['savecat'])){
@@ -163,7 +164,31 @@ if(isset($_POST['modifitem'])){
     }
     
 }
-//TOGGLE BUTTON ACTION
+//UPDATE STOCK
+if(isset($_POST['modifstock'])){
+    $id = $_POST['stockFixedId'];
+    $modif_id = $_POST['stockId'];
+    $modif_name = $_POST['selectItem'];
+    $modif_number = $_POST['itemNumber'];
+   
+    $query = "UPDATE ".$table_stock." SET item_name='$modif_name',initial_number='$modif_number', "
+            . "stock_id='$modif_id' WHERE id='$id'";
+    
+     $query1 = "SELECT SUM(flow_item_number) AS itemout FROM ".$table_flow." WHERE stockid = '$modif_id'";
+     $result1 = mysqli_fetch_array(mysqli_query($conn, $query1));
+    $actual_state = $modif_number - $result1['itemout'];
+    $updateStock = "UPDATE ".$table_stock." SET actual_number='$actual_state' WHERE id='$id' ";
+    $result = mysqli_query($conn, $query);
+    if($result){
+        $result2 = mysqli_query($conn, $updateStock);
+         echo '<script>alert("Successfuly update!")</script>';
+    }
+    else{
+        $error = die(mysqli_error($conn));
+        echo '<script>alert("'.$error.'")</script>';
+    }
+    
+}
 
 //INSERT CUTOMER INFO
 if(isset($_POST['customer'])){

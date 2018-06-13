@@ -56,18 +56,20 @@ $("#stockList").click(function(){
             data:"",
             dataType:'json',
             success:function(response){
-                
-               if(response===''){
-                    $("#tbody_stock").append("<p style='text-align:center'><strong>item Table is empty!</strong></p>");
-                }else{
+                var len = response.length;
+//               if(response===''){
+//                    $("#tbody_stock").append("<p style='text-align:center'><strong>item Table is empty!</strong></p>");
+//                }else{
                 alldata = response;
                 createTablerow(alldata, lastline, start);
                 createPageNumber(rowperpage,alldata.length);
-                }
+                console.log(len);
+//                }
                 if(start ===0){
                     btn_prev = document.getElementById("but_prev_stock");
                     btn_prev.setAttribute("disabled", true);
                 }
+              
             },
             error:function(response){
                 console.log(response);

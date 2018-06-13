@@ -11,13 +11,7 @@ $data = json_decode($_POST['billinfo'],true);
 $bill_no = $_POST['billno'];
 $client = $_POST['client'];
 $i = count($data);
-//foreach ($datafooter as $key) {
-//    $subtotal = $key['subtotal'];
-//    $total = $key['amount'];
-//    $bill_update = "UPDATE ".$table_billing." SET total_price='$subtotal', tax='$tax', final_price='$total'";
-//    $result_bill = mysqli_query($conn, $bill_update);
-//    
-//}
+
 foreach ($data as $value) {
    $item = $value["item"];
    $quantity = $value['quantity'];

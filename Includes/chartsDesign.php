@@ -1,4 +1,4 @@
-<div class="chartContent form-inline"> 
+<div class="chartContent form-inline" style="display: block"> 
 <span class="btn btn-primary btnchart form-control" data-content="flow">Sales Chart</span>
     <span class="btn btn-primary btnchart form-control" data-content="billing">Gain Chart</span>
     <select class="form-control itemchart">
@@ -14,18 +14,9 @@
                     <?php  }?>
     </select>
 </div>
-<div> 
-    <!--Div that will hold the dashboard-->
-    <div id="dashboard_div">
-      <!--Divs that will hold each control and chart-->
-      <div id="filter_div"></div>
-      <div id="chart_div"></div>
-      <div id="tooltips"></div>
-       
-    </div>
-    <div class="mydivbar hidden" style=" margin-top: 15px;">
+    <div class="col-xl-4 col-lg-12 col-md-3 col-sm-6 mb-4 mydivbar hidden" style="">
 <!--    revenue-->
-    <div class="panel panel-info" style="width: 30%; display: inline-block">
+    <div class="panel panel-info" style="width: 30%; display: inline-block; float: right; margin-left: 15px;">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-3">
@@ -40,18 +31,18 @@
         <div class="panel-footer" style="height: 50px">
             <div class="text-info">
                 <p style="display: inline">Stock id:</p>
-                <p  style="display: inline; text-align: right">0001</p><br>
+                <p  style="display: inline;" class="indicatorStockid text-right text-danger">0001</p><br>
                 <p style="display: inline">Stock entry date:</p>
-                <p style="display: inline">6/11/2018</p>
+                <p style="display: inline" class="indicatorStockdate text-right text-danger">6/11/2018</p>
             </div>
         </div>
     </div>
 <!--info item-->
-<div class="panel panel-primary" style="width: 30%; display: inline-block">
+<div class="panel panel-primary" style="width: 30%; display: inline-block; float: right">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-3">
-                <i class="fa fa-calculator fa-3x"></i>
+                <i class="fa fa-info-circle fa-3x"></i>
             </div>
             <div class="col-xs-9 text-right">
                 <div class="huge">26</div>
@@ -67,6 +58,16 @@
     </div>
     
     </div>
+<div style="" class="col-xl-4 col-lg-12 col-md-3 col-sm-6 mb-4"> 
+    <!--Div that will hold the dashboard-->
+    <div id="dashboard_div">
+      <!--Divs that will hold each control and chart-->
+      <div id="filter_div"></div>
+      <div id="chart_div"></div>
+      <div id="tooltips"></div>
+       
+    </div>
+
     <!--<div style="width: 1000px; height: 500px;">-->
      <div id="chartcol" style="width: 50%; height: 500px; display: inline-block" ></div>
     <div id="chartLine" style="position: relative; display: inline-block;"></div>

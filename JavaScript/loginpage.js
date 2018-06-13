@@ -11,9 +11,10 @@ var modal_codebill = document.getElementById('myModal-toggle');
 var btncategory = document.getElementById("addcategory");
 var btnitem = document.getElementById("additem");
 var btnnewstock = document.getElementById("newstock");
-var btnadduser = document.getElementById("adduser");
 var btnCodeBill = document.getElementById("billcode");
 var btnCustomer = document.getElementById("customer");
+var btnadduser = document.getElementById("adduser");
+
 
 
 // Get the <span> element that closes the modal
@@ -125,7 +126,8 @@ $('.modal-content').resizable({
 //CATEGORY MODIFICATION AJAX
 $(".mytable").on('click','.edit',function(){
     $("#itemModify").addClass('hidden');
-    $("#categoryModify").removeClass('hidden');
+    $("#stockModif").addClass('hidden');
+    $("#categoryModify").removeClass('hidden'); 
     var id = $(this).data('edit');
     $.ajax({
         type: "post",
@@ -211,6 +213,7 @@ $(".catradio").click(function(){
 //MODIFY ITEM
 $(".mytable").on('click','.edit-item',function(){
     $("#categoryModify").addClass('hidden');
+     $("#stockModif").addClass('hidden');
     $("#itemModify").removeClass('hidden');
     var id = $(this).data('edititem');
     console.log(id);
@@ -223,8 +226,9 @@ $(".mytable").on('click','.edit-item',function(){
             document.getElementById("Iditem").value = data[0];
            document.getElementById("itemIdModif").value = data[1];
            document.getElementById("itemNameModif").value = data[2];
-           $('select option[0]').innerHTML = data[3];
-           $('select option[0]').value = data[3];
+           var sel = document.getElementById("item-category");
+           sel.options[0].innerHTML = data[3];
+           sel.options[0].value = data[3];
            document.getElementById("itemPriceModif").value = data[4];
             modif.style.display="block";
        },
@@ -247,6 +251,61 @@ $(".mytable").on('click','.del-item',function(){
     $.ajax({
         type: "post",
        url:"Includes/deleteitem.php",
+       data: {deliditem: id},
+       success: function(data){
+           alert(data);
+       }
+    });
+});
+    $("#no").click(function(){
+       confirm.style.display="none";
+       id ='';
+        return false;
+    });
+    
+    return false;
+});
+
+//MODIFY STOCK
+$(".mytable").on('click','.edit-stock',function(){
+    $("#categoryModify").addClass('hidden');
+    $("#itemModify").addClass('hidden');
+     $("#stockModif").removeClass('hidden');
+    var id = $(this).data('editstock');
+    console.log(id);
+    $.ajax({
+        type: "post",
+       url:"Includes/modifStock.php",
+       data: {idstock: id},
+       dataType: "json",
+       success: function(data){
+            document.getElementById("stockFixedId").value = data[0];
+           document.getElementById("stockId").value = data[1];
+           var sel = document.getElementById("selectItem");
+           sel.options[0].innerHTML = data[2];
+           sel.options[0].value = data[2];
+           document.getElementById("itemNumber").value = data[3];
+            modif.style.display="block";
+       },
+       error:function(data){
+           console.log(data);
+       }
+       
+    });
+    
+    return false;
+});
+
+//DELETE ITEM
+$(".mytable").on('click','.del-stock',function(){
+    var id = $(this).data('delstock');
+     var confirm = document.getElementById("myModal-confirm");
+     confirm.style.display="block";
+     $("#yes").click(function(){
+         console.log(id);
+    $.ajax({
+        type: "post",
+       url:"Includes/deletestock.php",
        data: {deliditem: id},
        success: function(data){
            alert(data);

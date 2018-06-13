@@ -20,6 +20,13 @@
     $stockList = "SELECT * FROM ".$table_stock;
     $Executestock = mysqli_query($conn, $stockList);
     $rowcount_stock=mysqli_num_rows($Executestock);
+    
+  $table_billing = $_SESSION['user']."_billing";
+  $all_sold = "SELECT SUM(final_price) AS globalSold FROM ".$table_billing;
+  $all_bill = "SELECT COUNT(DISTINCT bill_id) AS billnum  FROM ".$table_billing;
+  $all_amount= mysqli_fetch_array(mysqli_query($conn, $all_sold));
+  $billnum = mysqli_fetch_array(mysqli_query($conn, $all_bill));
+  
 
  
 ?>
@@ -110,27 +117,11 @@
                       ?>
                 
             </div>
-            
-            <div class="fixed-action-btn click-to-toggle" style="bottom: 45px; right: 24px;">
-      <a class="btn-floating btn-large pink waves-effect waves-light">
-        <i class="large material-icons">add</i>
-      </a>
-
-      <ul>
-        <li>
-            <span id="add_note" class="btn-floating red"><i class="material-icons" title="Take note">note_add</i></span>
-        </li>
-
-        <li>
-            <span class="btn-floating yellow darken-1" id="billcode"><i class="material-icons" title="Add bill code">vpn_key</i></span>
-        </li>
-
-        <li>
-            <span class="btn-floating green" id="customer" ><i class="material-icons" title="add customer">account_circle</i></span>
-        </li>
-      </ul>
-    </div>
-            
+            <?php
+                if(isset($_SESSION['role']) && ($_SESSION['role']=='admin' || $_SESSION['role']=='cashier')){
+                    include 'Includes/toggleaction/toggleAction.php';
+                }
+            ?>    
         </div>
     
     </body>
@@ -150,6 +141,7 @@
         <script src="JavaScript/CategoryList.js"></script>
         <script src="JavaScript/ItemList.js"></script> 
         <script src="JavaScript/StockList.js"></script> 
+        <script src="JavaScript/accountList.js"></script>
         <script src="JavaScript/toggle_action.js"></script>  
          <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
          <script src="JavaScript/onlineScript/googleCharts.js"></script>

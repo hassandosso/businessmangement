@@ -1,5 +1,4 @@
-$(document).ready(function(){
-    
+$(document).ready(function(){  
    // Pivot array function
    function getPivotArray(dataArray, rowIndex, colIndex, dataIndex) {
            var result = {}, ret = [];
@@ -180,7 +179,10 @@ if(valueForChart==='flow'){
         if(itemName==='???'){
             $(".mybar").width('100%');
             $(".mybar").text('No item selected!!');
-            $(".huge").text(0)
+            $(".huge").text(0);
+            $(".hugesold").text(0);
+            $(".indicatorStockid").text('-');
+            $(".indicatorStockdate").text('-');
         }
         $.ajax({
             url:'Includes/charts_economic.php',
@@ -206,7 +208,7 @@ if(valueForChart==='flow'){
         colData[i][1] = parseFloat(colData[i][1]);
         colData[i][2] = parseFloat(colData[i][2])/100 * parseFloat(colData[i][1]);
         colData[i][3] = parseFloat(colData[i][3])/100 * parseFloat(colData[i][1]);
-       colData[i][4] = colData[i][1] + colData[i][2] + colData[i][3];
+       colData[i][4] = colData[i][1] - colData[i][2] + colData[i][3];
        mysold += (colData[i][4]);
     }  
     var secondArg = `${itemName} sale's details (Rs)`;
@@ -216,6 +218,8 @@ if(valueForChart==='flow'){
         var infoIndicator = myvalue[2];
         $(".huge").text(infoIndicator[0][1]);
          $(".hugesold").text(mysold.toFixed(3));
+         $(".indicatorStockid").text(infoIndicator[0][2]);
+         $(".indicatorStockdate").text(infoIndicator[0][3]);
         var barWidth = parseInt((parseInt(infoIndicator[0][1])/parseInt(infoIndicator[0][0])) * 100);
         $(".mybar").width(barWidth+'%');
         $(".mybar").text(barWidth+'%');
