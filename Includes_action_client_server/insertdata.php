@@ -202,6 +202,7 @@ if(isset($_POST['customer'])){
     if($insertCustomer){
         echo "<script>alert('customer registered successfully!')</script>";
     }else{
+//        die(mysqli_error($conn));
         echo "<script>alert('customer may already exist!')</script>";
     }
 }

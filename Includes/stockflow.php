@@ -34,7 +34,7 @@ foreach ($data as $value) {
    $id = $resultflow['stock_id'];
    $insertflow = "INSERT INTO ".$table_flow." (stockid, flow_date, flow_item_number) VALUES('$id','$date','$quantity')";
    $insertflowResult = mysqli_query($conn, $insertflow);
-   $amount = ($tax*$totalprice/100)+$totalprice;
+   $amount = $totalprice + $tax - $discount;
    //INSERT BILLING TABLE
    $query_bill = "INSERT INTO ".$table_billing." (bill_id,quantity,unit_price,total_price,tax, discount,final_price,"
            . "item_name, customer,bill_date) VALUES('$bill_no','$quantity','$unitprice','$totalprice','$tax',"

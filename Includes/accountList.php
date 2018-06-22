@@ -14,8 +14,8 @@ $result1 = mysqli_query($conn, $query1);
 while ($row = mysqli_fetch_array($result)){
     $billNo = $row['bill_id'];
     $subAmount = $row['subamount'];
-    $tax = ($row['tax'] * $subAmount)/100;
-    $discount = ($row['discount'] * $subAmount)/100;
+    $tax = $row['tax'];
+    $discount = $row['discount'];
     $totalAmount = $row['totalamount'];
     $date = $row['bill_date'];
     

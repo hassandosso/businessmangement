@@ -10,6 +10,9 @@
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $phone = $_POST['phone'];
+    $town = $_POST['town'];
+    $address = $_POST['address'];
+    $street = $_POST['street'];
     
     
     $passwordencrypted   = password_hash( $password, PASSWORD_BCRYPT, array('cost' => 11));
@@ -90,7 +93,7 @@
     
     $create_customer = "CREATE TABLE `$customer`( ".
     "id INT NOT NULL AUTO_INCREMENT, ". 
-    "customer_id VARCHAR(20) NOT NULL, ".
+    "customer_id VARCHAR(100) NOT NULL, ".
      "customer_name VARCHAR(100) NOT NULL, ".
      "customer_contact VARCHAR(100) DEFAULT NULL, ".
      "customer_email VARCHAR(100) DEFAULT NULL, ".
@@ -109,8 +112,8 @@
     $getEmail = mysqli_fetch_array(mysqli_query($conn, $checkEmail));
     $getMobile = mysqli_fetch_array(mysqli_query($conn, $checkMobile));
     
-    $Insert_user = "INSERT INTO clients_account (fullname,username,password,company,email,mobile,phone) "
-            . "VALUES('$fullname', '$username', '$passwordencrypted', '$company', '$email', '$mobile', '$phone')";
+    $Insert_user = "INSERT INTO clients_account (fullname,username,password,company,email,mobile,phone,town,address,street) "
+            . "VALUES('$fullname', '$username', '$passwordencrypted', '$company', '$email', '$mobile', '$phone', '$town', '$address', '$street')";
     
     if($getUsername>0){
         echo "username already exist";

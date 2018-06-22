@@ -14,7 +14,11 @@ while($row = mysqli_fetch_assoc($result)){
     $number = $row['number'];
     $entry = $row['entry'];
     $actualNumber = $row['actualNumber'];
-    $lastTransaction = $row['lastTransaction'];
+    if($row['lastTransaction']==NULL){
+        $lastTransaction='-';
+    }else{
+        $lastTransaction = $row['lastTransaction'];
+    }
 
     $stock_arr[] = array("id"=>$stockid,"name"=>$stockname,"number"=>$number,"entry"=>$entry,"actual"=>$actualNumber,"last"=>$lastTransaction);
  

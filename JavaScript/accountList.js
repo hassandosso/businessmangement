@@ -5,7 +5,7 @@ var tableDesign = "<div id='content'>\n\
 <span class='btn btn-info search'style='margin-bottom: 5px;'><i class='fa fa-search'></i>Search</span>\n\
 <input type='date' class='date-bill' style='margin-bottom: 5px; margin-left:15px; float: right'>\n\
 <table width='100%' id='account_table' class='table table-striped table-bordered' style='width:100%;'>\n\
-    <thead class='bg-danger' style='color: #222;'>\n\
+    <thead style='color: #222; background-color: #d9534f'>\n\
         <tr>\n\
             <th>Bill id</th>\n\
             <th>Sub amount</th>\n\

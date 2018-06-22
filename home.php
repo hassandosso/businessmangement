@@ -42,11 +42,13 @@ include 'Includes_action_client_server/login.php';
                 ?>
                 </h3></a>
             <div class="row">
-                <section class="col-md-4">
+                <!--<section class="col-md-4">-->
+                    <div class="myModal">
                     <div class="modal" id="myModal-login">
                         <?php include 'includes/loginpage.php'; ?>
                     </div>
-                </section>
+                    </div>
+                <!--</section>-->
             </div>
          <div id="wrapper">
     	<div id="slider">
@@ -67,6 +69,8 @@ include 'Includes_action_client_server/login.php';
         <script type="text/javascript"
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
+         <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
+       <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
         <script src="JavaScript/signup_signin.js"></script>
         <script src="JavaScript/carousel.js"></script>
         <script src="JavaScript/fieldValidation.js"></script>

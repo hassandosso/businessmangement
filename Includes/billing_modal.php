@@ -11,9 +11,9 @@
 	<div id="header">
                 <div id="address" class="span-12" style="float: left; width: 35%;">
                     <strong><input id="company" value="<?php echo $company;?>" readonly="readonly"></strong>
-			<input class="ll" value="123 Your Street">
-			<input class="ll" value="Your Town">
-			<input class="ll" value="Address Line 3">	
+			<input class="ll" value="<?php echo $street;?>">
+			<input class="ll" value="<?php echo $town;?>">
+			<input class="ll" value="<?php echo $address;?>">	
                         <strong><input class="ll" value="<?php echo $mobile;?>" readonly="readonly"></strong>
                         <strong><input style="margin-bottom:30px;" class="ll" value="<?php echo $email;?>" readonly="readonly"></strong>
                 </div>

@@ -5,7 +5,7 @@ var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-item' data-criteria='category' placeholder='Search by category..' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <input type='text' class='myInput-item' data-criteria='price' placeholder='Search by price..' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <table width='100%' id='item_table' class='table table-striped table-bordered' style='width:100%;'>\n\
-    <thead class='bg-danger' style='color: #222;'>\n\
+    <thead style='color: white; background-color: #d9534f'>\n\
         <tr>\n\
             <th>Item id</th>\n\
             <th>Item Name</th>\n\

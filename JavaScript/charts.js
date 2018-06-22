@@ -132,35 +132,39 @@ $(document).ready(function(){
     data:{db: valueForChart},
     dataType:'json',
     success:function(value){
-if(valueForChart==='flow'){
-    $("#dashboard_div").removeClass('hidden');
-     $("#chartcol").addClass('hidden');
-    var pieData = [];
-    for(var i =0; i<value.length; i++){
-        value[i][2] = parseInt(value[i][2]);
-        pieData.push([value[i][1], value[i][2], value[i][0]]);
-       
-    }  
-    var barData = value;
-  pieData.unshift(['Product','Count','Month']) ;
-   drawDashboard(pieData);
-   drawChart(barData);
-}else if(valueForChart==='billing'){
-    $("#chartcol").removeClass('hidden');
-    $("#dashboard_div").addClass('hidden');
-    var colData = value;
-    colData.unshift(['month','sold','discounts','taxes','Total gain']) ;
-    for(var i =1; i<colData.length; i++){
-        colData[i][1] = parseInt(colData[i][1]);
-        colData[i][2] = parseInt(colData[i][2])/100 * parseInt(colData[i][1]);
-        colData[i][3] = parseInt(colData[i][3])/100 * parseInt(colData[i][1]);
-       colData[i][4] = colData[i][1] + colData[i][2] + colData[i][3];
-    }  
-    
-    console.log(colData);
-    columnChart(colData);
-}
-      },
+    if(value.length >0){
+        if(valueForChart==='flow'){
+            $("#dashboard_div").removeClass('hidden');
+             $("#chartcol").addClass('hidden');
+            var pieData = [];
+            for(var i =0; i<value.length; i++){
+                value[i][2] = parseInt(value[i][2]);
+                pieData.push([value[i][1], value[i][2], value[i][0]]);
+
+            }  
+            var barData = value;
+          pieData.unshift(['Product','Count','Month']) ;
+           drawDashboard(pieData);
+           drawChart(barData);
+        }else if(valueForChart==='billing'){
+            $("#chartcol").removeClass('hidden');
+            $("#dashboard_div").addClass('hidden');
+            var colData = value;
+            colData.unshift(['month','sold','discounts','taxes','Total gain']) ;
+            for(var i =1; i<colData.length; i++){
+                colData[i][1] = parseInt(colData[i][1]);
+                colData[i][2] = parseInt(colData[i][2])/100 * parseInt(colData[i][1]);
+                colData[i][3] = parseInt(colData[i][3])/100 * parseInt(colData[i][1]);
+               colData[i][4] = colData[i][1] - colData[i][2] + colData[i][3];
+            }  
+
+            console.log(colData);
+            columnChart(colData);
+        }
+    }else{
+        alert("No data available!");
+    }
+              },
       error:function(error){
          console.log(error);
       }

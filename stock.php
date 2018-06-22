@@ -31,6 +31,9 @@
     $company = $resultinfo['company'];
     $mobile = $resultinfo['mobile'];
     $email = $resultinfo['email'];
+    $town = $resultinfo['town'];
+    $address = $resultinfo['address'];
+    $street = $resultinfo['street'];
     
 
  
@@ -189,7 +192,7 @@
        var disc =  $(".row_"+i+" .disc").val();
        var price = $(".row_"+i+" .price").val();
        var qt =  $(".row_"+i+" .qt").val();
-       var total = (price*qt)-(price*qt*disc)/100;
+       var total = ((price)-(price*disc)/100) * qt;
        $(".row_"+i+" .totalprice").val(total.toFixed(2));
 
        for(var j=0; j<countrows; j++){
@@ -198,23 +201,31 @@
     }
     var tax = $(".totaltax").val();
     $(".subtotal").val(subtotal.toFixed(2));
+     $(".tax").val(((tax * 100 )/subtotal).toFixed(3));
     subtotal = parseFloat(subtotal) + parseFloat(tax);
+   
     $(".total").val(subtotal.toFixed(2));
     subtotal =0;
     });
     
      $(".row_"+i).on('change','.tx', function(){
          var unittax=0;
+         var taxesAmount = 0;
          for(var t=0; t<countrows; t++){
         var data = document.getElementById("billtable").rows[t].cells;
-        unittax =parseFloat(data[3].children[0].value)+(parseFloat(unittax));
+        unittax =parseFloat(data[3].children[0].value * data[2].children[0].value)+(parseFloat(unittax));
+        taxesAmount = (parseFloat(data[4].children[0].value) * data[3].children[0].value * data[2].children[0].value)/100 + parseFloat(taxesAmount);
+        
     } 
-         $(".tax").val(parseInt(unittax));
+         
 //         var totaltax = $(".tax").val();
          var partial = $(".subtotal").val();
-        var totaltax =  parseFloat(unittax)*parseFloat(partial)/100;
-         $(".totaltax").val(totaltax.toFixed(2));
-         var amount = totaltax + parseFloat(partial);
+         var taxes = ((taxesAmount * 100 )/parseFloat(partial)).toFixed(3);
+         $(".tax").val(taxes);
+       // var totaltax =  parseFloat(unittax)*parseFloat(partial)/100;
+         $(".totaltax").val(taxesAmount.toFixed(2));
+         
+         var amount = taxesAmount + parseFloat(partial);
         $(".total").val(amount.toFixed(2));
      });
       $(".del").removeClass("hidden");

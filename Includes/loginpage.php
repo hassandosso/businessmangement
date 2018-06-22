@@ -1,7 +1,12 @@
-<form id="sign_in" method="post" action="">
-                  <div class="form-group modal-content">
-                      <span class="close">&times;</span>
-                    <h3 class="card-title text-primary text-left mb-5 mt-4">Login</h3>
+<div class="modal-dialog" role="document">   
+    <div class="form-group modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 class="modal-title text-primary text-left">Sign up / Sign in</h3>
+            <div id="message"></div>
+        </div>
+        <form id="sign_in" method="post" action="">
+            <h3 class="card-title text-primary text-center">Sign In</h3>
                     <div class="form-inline">
                       <input type="radio" name="useroption" class="form-control radio" value="admin" checked="checked">Admin
                       <input type="radio" name="useroption" class="form-control radio" value="subuser">Sub-user
@@ -26,23 +31,33 @@
                     <ul class="">
                         <li><a href="#" id="newaccount">Create new account</a></li>  
                     </ul>
-                  </div>
-</form>
-
-<form id="registration" method="post" class="">
-                  <div class="modal-content">
-                      <span class="close01">&times;</span>
+        </form>
+        <form id="registration" method="post" class="">
                     <h3 class="card-title text-primary text-left mb-5 mt-4">Sign up</h3>
                      <div id="error"></div>
                     <div class="form-group">
-                        <input type="text" name="fullname" class="form-control" placeholder="Full name" id="fullname" required="required">
-                        <input type="text" name="username" class="form-control" placeholder="Username" id="username" required="required">
-                        <input type="text" name="company" class="form-control" placeholder="company name" id="company" required="required">
-                        <input type="email" name="email" class="form-control" placeholder="Enter a valid email" id="email" required="required">
-                        <input type="text" name="mobile" class="form-control" placeholder="mobile number (ex. +country_code number)" id="mobile" required="required">
-                        <input type="text" name="phone" class="form-control" placeholder="Phone number" id="phone">
-                        <input type="password" name="password" class="form-control" placeholder="Enter Password" id="password" required="required">
-                        <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm password" id="confirmpassword" required="required">
+                        <label>Full name:</label>
+                        <input type="text" name="fullname" class="form-control" id="fullname" required="required">
+                        <label>Username:</label>
+                        <input type="text" name="username" class="form-control" id="username" required="required">
+                        <label>Company:</label>
+                        <input type="text" name="company" class="form-control" id="company" required="required">
+                        <label>Email:</label>
+                        <input type="email" name="email" class="form-control" id="email" required="required">
+                        <label>Mobile number (ex. 00 country_code number):</label>
+                        <input type="text" name="mobile" class="form-control" id="mobile" required="required">
+                        <label>Phone number:</label>
+                        <input type="number" name="phone" class="form-control" id="phone" minlength="8" maxlength="14">
+                        <label>Enter Password:</label>
+                        <input type="password" name="password" class="form-control" id="password" required="required">
+                        <label>Confirm password:</label>
+                        <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" required="required">
+                         <label>Town:</label>
+                        <input type="text" name="town" class="form-control" id="town">
+                         <label>Address:</label>
+                        <input type="text" name="address" class="form-control" id="address">
+                         <label>Street:</label>
+                        <input type="text" name="street" class="form-control" id="street">
                     </div>  
                 <div class="text-center form-inline">
                   <input type="submit" name="save" class=" form-control btn btn-primary" value="Sign up" id="btn-submit">
@@ -52,5 +67,7 @@
                         <li><a href="#" id="alreadyuser">Already user</a></li>  
                     </ul>
                         
-                  </div>
-</form>
+                  
+        </form>
+    </div>
+</div>
