@@ -26,6 +26,7 @@
     $billcode = $username.'_billcode';
     $customer = $username.'_customer';
     $user_account =$username.'_useraccount'; 
+    $note =$username.'_note'; 
     
     $create_useraccount = "CREATE TABLE `$user_account`( ".
      "id INT NOT NULL AUTO_INCREMENT, ".
@@ -100,6 +101,13 @@
      "customer_address VARCHAR(100) DEFAULT NULL, ".
      "CONSTRAINT PK_".$customer." PRIMARY KEY (id,customer_id)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
+    $create_note= "CREATE TABLE `$note`( ".
+     "id INT NOT NULL AUTO_INCREMENT, ".
+     "date datetime NOT NULL, ".
+     "title VARCHAR(100) DEFAULT NULL, ".
+     "content VARCHAR(100) DEFAULT NULL, ".
+     "reminder date DEFAULT NULL, ".
+     "PRIMARY KEY ( id )) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ";
     
     
     $checkUsername = "SELECT * FROM clients_account WHERE username='$username'";
@@ -148,7 +156,8 @@
                $result_billcode = mysqli_query($conn, $create_billcode);
                $result_customer = mysqli_query($conn, $create_customer);
                $result_useraccount = mysqli_query($conn, $create_useraccount);
-              $result_flow = mysqli_query($conn, $create_flow);
+               $result_flow = mysqli_query($conn, $create_flow);
+               $result_note = mysqli_query($conn, $create_note);
                if(!$result_useraccount){  
                   
                       $error = die(mysqli_error($conn));

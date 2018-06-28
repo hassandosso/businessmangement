@@ -155,7 +155,7 @@ $(".mytable").on('click','.del',function(){
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
      $("#yes").click(function(){
-         console.log(id);
+         confirm.style.display="none";
     $.ajax({
         type: "post",
        url:"Includes/DeleteCategory.php",
@@ -168,10 +168,9 @@ $(".mytable").on('click','.del',function(){
     $("#no").click(function(){
        confirm.style.display="none";
        id='';
-        return false;
+       
     });
     
-    return false;
 });
 
 //    IMPORT OR ADD DIRECTLY ITEM CONTROL
@@ -247,7 +246,7 @@ $(".mytable").on('click','.del-item',function(){
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
      $("#yes").click(function(){
-         console.log(id);
+         confirm.style.display="none";
     $.ajax({
         type: "post",
        url:"Includes/deleteitem.php",
@@ -260,10 +259,7 @@ $(".mytable").on('click','.del-item',function(){
     $("#no").click(function(){
        confirm.style.display="none";
        id ='';
-        return false;
     });
-    
-    return false;
 });
 
 //MODIFY STOCK
@@ -302,7 +298,7 @@ $(".mytable").on('click','.del-stock',function(){
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
      $("#yes").click(function(){
-         console.log(id);
+         confirm.style.display="none";
     $.ajax({
         type: "post",
        url:"Includes/deletestock.php",
@@ -315,9 +311,6 @@ $(".mytable").on('click','.del-stock',function(){
     $("#no").click(function(){
        confirm.style.display="none";
        id ='';
-        return false;
     });
-    
-    return false;
 });
 });

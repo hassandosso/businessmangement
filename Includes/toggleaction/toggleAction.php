@@ -5,7 +5,7 @@
 
       <ul>
         <li>
-            <span id="add_note" class="btn-floating red"><i class="material-icons" title="Take note">note_add</i></span>
+            <a href="?note" id="add_note" class="btn-floating red"><i class="material-icons" title="Take note">note_add</i></a>
         </li>
 
         <li>

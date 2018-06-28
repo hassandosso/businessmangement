@@ -42,10 +42,8 @@
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">-->
 
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-<!--         <link rel="stylesheet" href="assets/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/themify-icons.css">
 <!--         new link-->
@@ -54,7 +52,8 @@
         
         <link rel="stylesheet" href="Style/indexModalStyle.css">
          <link rel="stylesheet" href="Style/indexstyle.css">
-         
+         <link rel="stylesheet" href="Style/notestyle.css">
+         <link rel="stylesheet" href="Style/animate.css">
       
     </head>
     <body>
@@ -113,6 +112,9 @@
                 if(isset($_GET['charts'])){
                     include "Includes/chartsDesign.php";
                 }
+                if(isset($_GET['note'])){
+                    include "Includes/toggleaction/note.php";
+                }
 //                    
                       ?>
                 
@@ -130,10 +132,7 @@
         <script type="text/javascript"
             src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
         </script>
-<!--        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-<!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>-->
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<!--        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
        <script src='dist/jspdf.min.js'></script>
@@ -142,8 +141,8 @@
         <script src="JavaScript/ItemList.js"></script> 
         <script src="JavaScript/StockList.js"></script> 
         <script src="JavaScript/accountList.js"></script>
-        <script src="JavaScript/toggle_action.js"></script>  
-         <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
+        <script src="JavaScript/toggle_action.js"></script> 
+        <script src="JavaScript/note.js"></script>
          <script src="JavaScript/onlineScript/googleCharts.js"></script>
          <script src="JavaScript/charts.js"></script>
         <script>
