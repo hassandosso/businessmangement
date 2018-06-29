@@ -42,10 +42,7 @@
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
 <!--         new link-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--        end new style-->
@@ -129,9 +126,6 @@
     </body>
     
     <script src="vendor/jquery/jquery.min.js"></script>
-        <script type="text/javascript"
-            src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js">
-        </script>
         <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
@@ -145,7 +139,4 @@
         <script src="JavaScript/note.js"></script>
          <script src="JavaScript/onlineScript/googleCharts.js"></script>
          <script src="JavaScript/charts.js"></script>
-        <script>
-        
-        </script>
 </html>

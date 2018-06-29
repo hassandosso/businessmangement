@@ -10,7 +10,8 @@ if(isset($_POST['saveuser'])){
       
       $passwordencrypted   = password_hash( $user_password, PASSWORD_BCRYPT, array('cost' => 11));
       
-      $Insert_user = "INSERT INTO ".$user_table." (fullname, username, password, role) VALUES('$user_fullname', '$username', '$passwordencrypted', '$user_role')";
+      $Insert_user = "INSERT INTO ".$user_table." (fullname, username, password, role) "
+              . "VALUES('$user_fullname', '$username', '$passwordencrypted', '$user_role')";
       $result_user = mysqli_query($conn, $Insert_user);
 
             if(!$result_user){

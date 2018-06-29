@@ -6,8 +6,6 @@ if(isset($_POST['login'])){
     $login_password = $_POST['password'];
     $user_type = $_POST['useroption'];
     $user_account = $login_username."_useraccount";
-    
-    $passwordencrypted   = password_hash( $login_password, PASSWORD_BCRYPT, array('cost' => 11));
     if($user_type=='admin'){
     $usercheck = "SELECT username,password,company FROM clients_account WHERE username='$login_username'";
     $resultcheck = mysqli_query($conn, $usercheck);
@@ -31,7 +29,7 @@ if(isset($_POST['login'])){
             }
         }
         else{
-            echo '<script>alert("Wrong username or password")</script>';
+            echo '<script>alert("User does not exist, please create new account")</script>';
         }
     }
     else{

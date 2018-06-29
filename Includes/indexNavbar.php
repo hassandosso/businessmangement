@@ -1,6 +1,6 @@
 <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><?php if(isset($_SESSION['company'])){echo "{$_SESSION['company']}";} ?></a>
+                    <a class="navbar-brand animated flip" href="#"><?php if(isset($_SESSION['company'])){echo "{$_SESSION['company']}";} ?></a>
                 </div>
                     <ul class="nav navbar-nav menu">
                         <li><a href="home.php">Home</a></li>

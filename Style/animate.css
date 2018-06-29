@@ -1930,6 +1930,7 @@
   backface-visibility: visible;
   -webkit-animation-name: flip;
   animation-name: flip;
+ 
 }
 
 @-webkit-keyframes flipInX {
