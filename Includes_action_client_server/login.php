@@ -72,3 +72,20 @@ if(isset($_POST['login'])){
     }
 }
 
+ if(isset($_POST['forgot'])){
+     $email = $_POST['forgot_email'];
+     $query = "SELECT username, password FROM clients_account WHERE email = '$email'";
+     $result = mysqli_query($conn, $query);
+     if($result){
+         $count = mysqli_num_rows($result);
+         if($count == 1){
+             echo '<script>alert("Your password has been sent to your email id, please check")</script>';
+         } else {
+             echo '<script>alert("Email does not exist in database")</script>';
+         }
+     }else
+     {
+         die(mysqli_error($conn));
+     }
+ }
+

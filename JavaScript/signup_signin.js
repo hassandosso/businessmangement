@@ -21,6 +21,7 @@ var btn = document.getElementById("signup");
 var btn1 = document.getElementById("login");
 var alreadyuser = document.getElementById('alreadyuser');
 var newaccount = document.getElementById('newaccount');
+var forgot_password = document.getElementById('forgotPassword');
 
 
 // Get the <span> element that closes the modal
@@ -33,6 +34,7 @@ btn.onclick = function() {
     modal.style.display = "block";
     $('#sign_in').addClass('hidden');
     $('#registration').removeClass('hidden');
+    $('#getForgotPassword').addClass('hidden');
     
 }
 
@@ -41,6 +43,7 @@ btn1.onclick = function() {
     modal.style.display = "block";
      $('#sign_in').removeClass('hidden');
     $('#registration').addClass('hidden');
+    $('#getForgotPassword').addClass('hidden');
    
     
 }
@@ -48,6 +51,7 @@ alreadyuser.onclick = function() {
     //modal.style.display = "block";
      $('#sign_in').removeClass('hidden');
     $('#registration').addClass('hidden');
+    $('#getForgotPassword').addClass('hidden');
    
     
 }
@@ -55,6 +59,14 @@ newaccount.onclick = function() {
     modal.style.display = "block";
     $('#sign_in').addClass('hidden');
     $('#registration').removeClass('hidden');
+    $('#getForgotPassword').addClass('hidden');
+    }
+    
+   forgot_password.onclick = function() {
+    modal.style.display = "block";
+    $('#sign_in').addClass('hidden');
+    $('#registration').addClass('hidden');
+    $('#getForgotPassword').removeClass('hidden');
     }
 
 

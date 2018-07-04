@@ -29,7 +29,8 @@
                     <button type="submit" class="btn btn-primary" name="login">Login</button>
                 </div><br>
                     <ul class="">
-                        <li><a href="#" id="newaccount">Create new account</a></li>  
+                        <li><a href="#" id="newaccount">Create new account</a></li>
+                        <li class="text-right"><a href="#" id="forgotPassword">Forgot Password?</a></li>
                     </ul>
         </form>
         <form id="registration" method="post" class="">
@@ -65,9 +66,13 @@
                 </div>
                        <ul>
                         <li><a href="#" id="alreadyuser">Already user</a></li>  
-                    </ul>
-                        
-                  
+                    </ul>            
+        </form>
+        <form id="getForgotPassword" method="post">
+            <h3 class="card-title text-primary text-left mb-5 mt-4">Forgot password</h3>
+            <label>Enter Registered Email:</label>
+            <input type="email" name="forgot_email" class="form-control" required="required">
+            <button type="submit" class="btn btn-primary" name="forgot">Send</button>
         </form>
     </div>
 </div>

@@ -26,4 +26,5 @@ if(isset($_POST['saveuser'])){
                echo '<script>alert("user has been registered successfully")</script>';
            }
   }
+  
 
