@@ -189,11 +189,11 @@ CREATE TABLE `hassan_useraccount` (
   `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `hassan_useraccount` */
 
-insert  into `hassan_useraccount`(`id`,`fullname`,`username`,`password`,`role`) values (1,'Dosso Lassina','Hassan','$2y$11$Mjc2m2e6h4BwTUUElihRUu/QTisclgTCxh27DIQmmWa4rQN92PzrC','admin');
+insert  into `hassan_useraccount`(`id`,`fullname`,`username`,`password`,`role`) values (1,'Dosso Lassina','Hassan','$2y$11$Mjc2m2e6h4BwTUUElihRUu/QTisclgTCxh27DIQmmWa4rQN92PzrC','admin'),(2,'Karamoko mamadou','mamsiny','$2y$11$7AJw57qwgCrHDVViU1UEweae7l2jCs4wtJoLgQnqh7GEgsUnyhn8q','simple');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

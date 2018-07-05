@@ -1,6 +1,6 @@
 <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="images/Business Management.png" class="img-responsive"></a>
+                    <a class="navbar-brand bmlogo" href="#"><img src="images/Business Management.png" class="img-responsive"></a>
                 </div>
                     <ul class="nav navbar-nav menu">
                         <li><a href="home.php">Home</a></li>

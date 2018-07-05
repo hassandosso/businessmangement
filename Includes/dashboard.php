@@ -1,5 +1,5 @@
 <h5 class="text-primary mb-4" style="margin-top: 40px;">Dashboard</h5>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown">
             <div class="panel" style="background-color: #222; border-color: #d9534f;">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -7,8 +7,7 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a id="catlist" href="#" class="dropdown-item glyphicon glyphicon-list">List</a></li>
-                        <li><a id="action" href="#" class="dropdown-item glyphicon glyphicon-adjust">Actions</a></li>
+                        <li><a id="catlist" href="#" class="dropdown-item fa fa-info-circle">Detail</a></li>
                     </ul>
                 </div>
                 <div class="card-block" style="color: white">
@@ -21,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 0.35s">
             <div class="panel panel" style="border-color: #222; background-color: #d9534f">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -29,8 +28,7 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a id="itemlist" href="#" class="dropdown-item glyphicon glyphicon-list">List</a></li>
-                        <li><a id="Item-action" href="#" class="dropdown-item glyphicon glyphicon-adjust">Actions</a></li>
+                        <li><a id="itemlist" href="#" class="dropdown-item fa fa-info-circle">Detail</a></li>
                     </ul>
                 </div>
                 <div class="card-block" style="color: white">
@@ -47,7 +45,7 @@
                 
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 0.7s">
             <div class="panel" style="background-color: #222; border-color: red;">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -55,8 +53,7 @@
                         <i class="fa fa-cog"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a id="stockList" class="dropdown-item" href="#"><span class="glyphicon glyphicon-adjust"></span>List</a></li>
-                        <li><a class="dropdown-item" href="#"><span class="glyphicon glyphicon-list"></span>Action</a></li>
+                        <li><a id="stockList" class="dropdown-item" href="#"><span class="fa fa-info-circle"></span>Detail</a></li>
                     </ul>
                 </div>
                     <div class="card-block" style="color: white">
@@ -72,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4">
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 1.05s">
             <div class="panel panel" style="border-color: #222; background-color: #d9534f">
                 <div class="panel-heading">
                 <div class="dropdown setting">

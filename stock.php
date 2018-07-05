@@ -59,6 +59,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="Style/indexstyle.css">
        <link rel="stylesheet" href="Style/indexModalStyle.css">
+       <link rel="stylesheet" href="Style/animate.css">
         
     </head>
     <body>

@@ -16,7 +16,7 @@
 </div>
     <div class="col-xl-4 col-lg-12 col-md-3 col-sm-6 mb-4 mydivbar hidden" style="">
 <!--    revenue-->
-    <div class="panel panel-info" style="width: 30%; display: inline-block; float: right; margin-left: 15px;">
+    <div class="panel panel-info animated fadeInRight" style="width: 30%; display: inline-block; float: right; margin-left: 15px;">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-3">
@@ -38,7 +38,7 @@
         </div>
     </div>
 <!--info item-->
-<div class="panel panel-primary" style="width: 30%; display: inline-block; float: right">
+<div class="panel panel-primary animated fadeInLeft" style="width: 30%; display: inline-block; float: right">
     <div class="panel-heading">
         <div class="row">
             <div class="col-xs-3">
@@ -63,14 +63,14 @@
     <div id="dashboard_div">
       <!--Divs that will hold each control and chart-->
       <div id="filter_div"></div>
-      <div id="chart_div"></div>
-      <div id="tooltips"></div>
+      <div id="chart_div" class="animated fadeInLeft"></div>
+      <div id="tooltips" class="animated fadeInLeft"></div>
        
     </div>
 
     <!--<div style="width: 1000px; height: 500px;">-->
-     <div id="chartcol" style="width: 50%; height: 500px; display: inline-block" ></div>
-    <div id="chartLine" style="position: relative; display: inline-block;"></div>
+    <div id="chartcol" style="width: 50%; height: 500px; display: inline-block" class="animated fadeInLeft"></div>
+    <div id="chartLine" style="position: relative; display: inline-block;" class="animated fadeInRight"></div>
   
     <!--</div>-->   
     

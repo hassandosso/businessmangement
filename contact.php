@@ -24,6 +24,7 @@ include 'Includes_action_client_server/login.php';
         <link rel="stylesheet" href="Style/contactstyl.css">
         <link rel="stylesheet" href="Style/home_contact_ModalStyle.css">
         <link rel="stylesheet" href="Style/footerstyle.css">
+        <link rel="stylesheet" href="Style/animate.css">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">

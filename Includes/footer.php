@@ -1,6 +1,6 @@
 
 <!--Footer-->
-<footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4" >
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4 animated slideInUp">
 
     <!--Footer Links-->
     <div class="container text-center text-md-left">

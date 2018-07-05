@@ -152,6 +152,7 @@ $(".mytable").on('click','.edit',function(){
  
 $(".mytable").on('click','.del',function(){
     var id = $(this).data('del');
+    console.log("this is id: "+id);
      var confirm = document.getElementById("myModal-confirm");
      confirm.style.display="block";
      $("#yes").click(function(){
@@ -312,5 +313,15 @@ $(".mytable").on('click','.del-stock',function(){
        confirm.style.display="none";
        id ='';
     });
+});
+
+$(function() {
+  setInterval(function() {
+    var animationName = 'animated flash';
+    var animationend = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+    $('.logo').addClass(animationName).one(animationend, function() {
+      $(this).removeClass(animationName);
+    });
+  }, 3000);
 });
 });

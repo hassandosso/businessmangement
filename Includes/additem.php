@@ -1,5 +1,5 @@
 <div class="modal-dialog" role="document">   
-    <div class="form-group modal-content">
+    <div class="form-group modal-content animated slideInDown">
         <div class="modal-header">
             <span class="close2">&times;</span>
             <h3 class="modal-title text-primary text-left">Add item</h3> 

@@ -1,4 +1,4 @@
-<div class="modal-content">
+<div class="modal-content animated slideInUp">
     <span class="close1">&times;</span>
     <a class="btn-floating btn-medium red waves-effect waves-light hidden del" style="float: right; top: 45px; right: 24px;" >
         <i class="medium material-icons" id="deleterow" style="text-align: center;" title="remove line">delete</i>

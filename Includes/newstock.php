@@ -1,5 +1,5 @@
 <div class="modal-dialog" role="document">   
-    <div class="form-group modal-content">
+    <div class="form-group modal-content animated slideInDown">
         <div class="modal-header">
             <span class="close3">&times;</span>
             <h3 class="card-title text-primary text-left">Create stock</h3> 

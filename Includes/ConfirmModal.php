@@ -1,5 +1,5 @@
 <div class="modal-dialog" role="document">  
-   <div class="form-inline modal-content" style="text-align: center;">
+   <div class="form-inline modal-content animated slideInDown" style="text-align: center;">
         <div class="modal-header">
            <h3 class="text-primary">Do you want to remove this?</h3> 
         </div>

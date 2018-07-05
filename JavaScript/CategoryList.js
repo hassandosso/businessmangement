@@ -137,14 +137,14 @@ $(".mytable").on('click','#but_next',function(){
       $(this).addClass('active');
        var page = $(this).data('value');
        start =page;
-       if(start ==0){
+       if(start ===0){
            btn_prev.setAttribute("disabled", true);
        }
        else{
            btn_prev.removeAttribute("disabled");
        }
        lastline = page+rowperpage-1;
-       if(filter == ''){
+       if(filter === ''){
            if (lastline>=alldata.length-1 ){
                btn_next.setAttribute("disabled", true);
                lastline =alldata.length; 
@@ -242,7 +242,7 @@ function createTablerow(data, perpage,start){
  }
  
  
-   if(lastline ==alldata.length){
+   if(lastline ===alldata.length){
         btn_next = document.getElementById("but_next");
         btn_prev = document.getElementById("but_prev");
         btn_next.setAttribute("disabled", true);

@@ -24,9 +24,10 @@ include 'Includes_action_client_server/login.php';
         <link rel="stylesheet" href="Style/menustyle.css">
         <link rel="stylesheet" href="Style/home_contact_ModalStyle.css">
         <link rel="stylesheet" href="Style/carousel.css">
+        <link rel="stylesheet" href="Style/animate.css">
     </head>
     <body>
-       <nav class="navbar navbar-inverse navbar-fixed-top">
+       <nav class="navbar navbar-inverse navbar-fixed-top animated slideInUp">
             <?php include 'includes/navbar.php'; ?>
         </nav>
         <div class="container afternav">

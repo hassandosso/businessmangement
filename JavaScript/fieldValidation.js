@@ -1,5 +1,15 @@
 $(document).ready(function()
 { 
+    $(function() {
+  setInterval(function() {
+    var animationName = 'animated slideInUp';
+    var animationend = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+    $('.bmlogo').addClass(animationName).one(animationend, function() {
+      $(this).removeClass(animationName);
+    });
+  }, 3000);
+});
+
 //    CHECK PASSWORD AND CONFIRM PASSWORD
     $("#confirmpassword").blur(function(){
          $('h2').remove();
@@ -57,12 +67,13 @@ $(".radio").click(function(){
   var  isSelected = $('input:radio[name=useroption]:checked').val();
   var element = "<span class='input-group-addon removable'><i class='glyphicon glyphicon-user removable'></i></span>\
                                 <input type='text' name='subuser' class='form-control removable' placeholder='Sub user'>";
-    if(isSelected == "subuser" ){
+    if(isSelected === "subuser" ){
+        $(".removable").remove();
         $("#subusername").append(element);
         $("#subusername").addClass('user')
     }
     
-    else if(isSelected == "admin" ){
+    else if(isSelected === "admin" ){
         $(".removable").remove();
         $("#subusername").removeClass('user');
     }

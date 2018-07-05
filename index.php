@@ -54,7 +54,7 @@
       
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top barnav">
+        <nav class="navbar navbar-inverse navbar-fixed-top barnav animated slideInUp">
             <?php include 'includes/indexNavbar.php'; ?>
         </nav>
         <div class="container-fluid afternav">
@@ -101,8 +101,9 @@
             <!--</section>-->
             </div>
             <div class="row col-md-1 col-lg-1"></div>
-            <div class="row col-md-10 col-lg-10 mytable">
-                <?php 
+            <div class="row col-md-10 col-lg-10 mytable animated">
+                <?php
+                
                 if(isset($_GET['boards'])){
                      include "Includes/dashboard.php";
                 }

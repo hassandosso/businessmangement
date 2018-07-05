@@ -79,7 +79,7 @@ if(isset($_POST['login'])){
      if($result){
          $count = mysqli_num_rows($result);
          if($count == 1){
-             echo '<script>alert("Your password has been sent to your email id, please check")</script>';
+             echo '<script>alert("A reset link has been sent to your email id, visit that link to reset your password")</script>';
          } else {
              echo '<script>alert("Email does not exist in database")</script>';
          }
