@@ -9,11 +9,11 @@
         </li>
 
         <li>
-            <span class="btn-floating yellow darken-1" id="billcode"><i class="material-icons" title="Add bill code">vpn_key</i></span>
+            <span class="btn-floating yellow darken-1 billcode" id="billcode"><i class="material-icons" title="Add bill code">vpn_key</i></span>
         </li>
 
         <li>
-            <span class="btn-floating green" id="customer" ><i class="material-icons" title="add customer">account_circle</i></span>
+            <span class="btn-floating green customer" id="customer" ><i class="material-icons" title="add customer">account_circle</i></span>
         </li>
       </ul>
     </div>

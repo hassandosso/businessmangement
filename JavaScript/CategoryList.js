@@ -3,6 +3,7 @@ $(document).ready(function(){
     //VARIABLE INITIALISATION
 var tableDesign = " <div id='content'>\n\
 <input type='text' id='myInput' placeholder='Search for names..' style='margin-bottom: 5px;'>\n\
+<button class='btn btn-primary fa fa-download exportcat' style='margin-bottom: 5px; float: right'>Download</button>\n\
 <table width='100%' id='emp_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead style='background-color: black; color: white;'>\n\
         <tr>\n\
@@ -25,7 +26,7 @@ var tableDesign = " <div id='content'>\n\
 </div>";
 var btn_prev;
 var btn_next;
-var rowperpage = 10;
+var rowperpage = 15;
 var lastline = rowperpage-1;
 var alldata;
 var start = 0, searchdata =[];
@@ -99,7 +100,7 @@ $(".mytable").on('click','#but_next',function(){
             $(".mytable .page").removeClass('active'); 
             btn_next.removeAttribute("disabled");
             if(filter ===''){
-                if(lastline===alldata.length && (lastline - start)<10){
+                if(lastline===alldata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{
@@ -113,7 +114,7 @@ $(".mytable").on('click','#but_next',function(){
              }
              createTablerow(alldata, lastline, start);
             }else{
-                if(lastline===searchdata.length && (lastline - start)<10){
+                if(lastline===searchdata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{

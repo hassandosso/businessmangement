@@ -1,5 +1,5 @@
 <h5 class="text-primary mb-4" style="margin-top: 40px;">Dashboard</h5>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated slideInDown" style="animation-delay: 0.5s">
             <div class="panel" style="background-color: #222; border-color: #d9534f;">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 0.35s">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated slideInDown" style="animation-delay: 0.5s">
             <div class="panel panel" style="border-color: #222; background-color: #d9534f">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -45,7 +45,7 @@
                 
             </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 0.7s">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated slideInDown" style="animation-delay: 0.5s">
             <div class="panel" style="background-color: #222; border-color: red;">
                 <div class="panel-heading">
                 <div class="dropdown setting">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated fadeInDown" style="animation-delay: 1.05s">
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4 animated slideInDown" style="animation-delay: 0.5s">
             <div class="panel panel" style="border-color: #222; background-color: #d9534f">
                 <div class="panel-heading">
                 <div class="dropdown setting">

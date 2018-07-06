@@ -2,7 +2,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand logo" href="#"><?php if(isset($_SESSION['company'])){echo "{$_SESSION['company']}";} ?></a>
                 </div>
-                    <ul class="nav navbar-nav menu">
+                    <ul class="nav navbar-nav menu animated slideInRight">
                         <li><a href="home.php">Home</a></li>
                         <li class="dropdown" >
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-shopping-cart"></span>
@@ -47,11 +47,11 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user"></span>
                                     <?php if(isset($_SESSION['user']) && !isset($_SESSION['subuser'])){echo "{$_SESSION['user']}";}
                                     else if(isset ($_SESSION['user']) && isset ($_SESSION['subuser'])){
-                                        echo $_SESSION['user']."@".$_SESSION['subuser'];}?><span class="caret"></span></a>
+                                        echo $_SESSION['user']."/".$_SESSION['subuser'];}?><span class="caret"></span></a>
                                     <ul class="dropdown-menu undermenu">
                                         <?php
                                             if(isset($_SESSION['role']) && $_SESSION['role']=='admin'){
-                                                echo '<li><a href="#" id="adduser"><span class="glyphicon glyphicon-plus"></span>Add user</a></li>';
+                                                echo '<li><a href="#" class="adduser"><span class="glyphicon glyphicon-plus"></span>Add user</a></li>';
                                             }
                                         ?>
                                         <li><a href="Includes_action_client_server/logout.php" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

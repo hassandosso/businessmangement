@@ -4,6 +4,7 @@ var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-item' data-criteria='name' placeholder='Search by names..' style='margin-bottom: 5px;'>\n\
 <input type='text' class='myInput-item' data-criteria='category' placeholder='Search by category..' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <input type='text' class='myInput-item' data-criteria='price' placeholder='Search by price..' style='margin-bottom: 5px; margin-left:15px;'>\n\
+<button class='btn btn-primary fa fa-download exportitem' style='margin-bottom: 5px; float: right'>Download</button>\n\
 <table width='100%' id='item_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead style='color: white; background-color: #d9534f'>\n\
         <tr>\n\
@@ -30,7 +31,7 @@ var tableDesign = "<div id='content'>\n\
 </div>";
 var btn_prev;
 var btn_next;
-var rowperpage = 10;
+var rowperpage = 15;
 var lastline = rowperpage-1;
 var alldata, searchdata =[];
 var start = 0;
@@ -108,7 +109,7 @@ $(".mytable").on('click','#but_next_item',function(){
         $(".mytable .page-item").removeClass('active'); 
             btn_next.removeAttribute("disabled");
             if(filter ===''){
-                if(lastline===alldata.length && (lastline - start)<10){
+                if(lastline===alldata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{
@@ -122,7 +123,7 @@ $(".mytable").on('click','#but_next_item',function(){
              }
              createTablerow(alldata, lastline, start);
             }else{
-                if(lastline===searchdata.length && (lastline - start)<10){
+                if(lastline===searchdata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{

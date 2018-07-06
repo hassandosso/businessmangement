@@ -4,6 +4,7 @@ var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-stock' data-criteria='name' placeholder='Search by item name..' style='margin-bottom: 5px;'>\n\
 <input type='date' class='date-stock' data-criteria='entry' style='margin-bottom: 5px; margin-left:15px;'>\n\
 <input type='date' class='date-stock' data-criteria='out' style='margin-bottom: 5px; margin-left:15px;'>\n\
+<button class='btn btn-primary fa fa-download exportstock' style='margin-bottom: 5px; float: right'>Download</button>\n\
 <table width='100%' id='stock_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead style='background-color: black; color: white;'>\n\
         <tr>\n\
@@ -34,7 +35,7 @@ var tableDesign = "<div id='content'>\n\
 </div>";
 var btn_prev;
 var btn_next;
-var rowperpage = 10;
+var rowperpage = 15;
 var lastline = rowperpage-1;
 var alldata, searchdata =[];
 var start = 0;
@@ -114,7 +115,7 @@ $(".mytable").on('click','#but_next_stock',function(){
         $(".mytable .page-stock").removeClass('active'); 
             btn_next.removeAttribute("disabled");
             if(filter ===''){
-                if(lastline===alldata.length && (lastline - start)<10){
+                if(lastline===alldata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{
@@ -128,7 +129,7 @@ $(".mytable").on('click','#but_next_stock',function(){
              }
              createTablerow(alldata, lastline, start);
             }else{
-                if(lastline===searchdata.length && (lastline - start)<10){
+                if(lastline===searchdata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{

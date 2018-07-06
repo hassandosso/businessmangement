@@ -4,7 +4,7 @@ var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-account' placeholder='Search by bill no..' style='margin-bottom: 5px;'>\n\
 <span class='btn btn-info search'style='margin-bottom: 5px;'><i class='fa fa-search'></i>Search</span>\n\
 <input type='date' class='date-bill' style='margin-bottom: 5px; margin-left:15px; float:'>\n\
-<button class='btn btn-primary' id='export' style='margin-bottom: 5px; float: right'>Excel</button>\n\
+<button class='btn btn-primary fa fa-download' id='export' style='margin-bottom: 5px; float: right'>Download</button>\n\
 <table width='100%' id='account_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead style='color: #222; background-color: #d9534f'>\n\
         <tr>\n\
@@ -35,7 +35,7 @@ var tableDesign = "<div id='content'>\n\
 </div>";
 var btn_prev;
 var btn_next;
-var rowperpage = 10;
+var rowperpage = 15;
 var lastline = rowperpage-1;
 var alldata, searchdata =[];
 var start = 0;
@@ -61,9 +61,6 @@ $("#soldDetails").click(function(){
                 var bill_info = myresponse[0];
                 var bill_item = myresponse[1];
                var totalDiscount = 0, totaltax = 0, subAmount = 0, totalAmount= 0;
-
-                console.log(bill_info);
-                console.log(bill_item);
             for(var i = 0; i<bill_info.length; i++){
                 var arrayelement={};
                 arrayelement['billNo'] = bill_info[i]['billNo'];
@@ -77,10 +74,14 @@ $("#soldDetails").click(function(){
                 totalAmount = parseFloat(bill_info[i]['totalAmount'],10)+parseFloat(totalAmount,10);
 
                 var item ='';
+                var t =0;
                 for(var j=0; j<bill_item.length; j++){
                     if(bill_item[j]['billNo']===bill_info[i]['billNo']){
-                        if(j!=0 && j%2==0)
+                        t+=1;
+                        if(t===3){
                             item += bill_item[j]['itemName']+',<br> ';
+                            t=0;
+                        }
                         else{
                             if(j< (bill_item.length-1))
                                 item += bill_item[j]['itemName']+', '; 
@@ -95,7 +96,7 @@ $("#soldDetails").click(function(){
                 response.push(arrayelement);
             
         }
-                $('.mytable  .subamount').text(totalAmount);
+                $('.mytable  .subamount').text(subAmount);
                 $('.mytable  .alltax').text(totaltax);
                 $('.mytable  .alldisc').text(totalDiscount);
                 $('.mytable  .totalAmount').text(totalAmount);
@@ -154,7 +155,7 @@ $(".mytable").on('click','#but_next_account',function(){
         $(".mytable .page-account").removeClass('active'); 
             btn_next.removeAttribute("disabled");
             if(filter ===''){
-                if(lastline===alldata.length && (lastline - start)<10){
+                if(lastline===alldata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{
@@ -168,7 +169,7 @@ $(".mytable").on('click','#but_next_account',function(){
              }
              createTablerow(alldata, lastline, start);
             }else{
-                if(lastline===searchdata.length && (lastline - start)<10){
+                if(lastline===searchdata.length && (lastline - start)<rowperpage){
                     lastline = start -1;
                     start -=rowperpage;
                 }else{

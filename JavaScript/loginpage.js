@@ -11,9 +11,9 @@ var modal_codebill = document.getElementById('myModal-toggle');
 var btncategory = document.getElementById("addcategory");
 var btnitem = document.getElementById("additem");
 var btnnewstock = document.getElementById("newstock");
-var btnCodeBill = document.getElementById("billcode");
-var btnCustomer = document.getElementById("customer");
-var btnadduser = document.getElementById("adduser");
+var btnCodeBill = document.getElementsByClassName("billcode");
+var btnCustomer = document.getElementsByClassName("customer");
+var btnadduser = document.getElementsByClassName("adduser");
 
 
 
@@ -48,24 +48,28 @@ btnnewstock.onclick = function(){
     modal_adduser.style.display = "none";
 
 }
-btnadduser.onclick = function() {
-    modal_adduser.style.display = "block";
-    modal_newstock.style.display = "none";
-    modal_cat.style.display = "none";
-    modal_item.style.display="none";
 
-}
+    btnadduser.onclick = function() {
+        modal_adduser.style.display = "block";
+        modal_newstock.style.display = "none";
+        modal_cat.style.display = "none";
+        modal_item.style.display="none";
 
-btnCodeBill.onclick = function(){
-    modal_codebill.style.display = "block"; 
-    $(".codebill").removeClass('hidden');
-    $(".customer").addClass('hidden');
-}
-btnCustomer.onclick = function(){
-    modal_codebill.style.display = "block"; 
-    $(".customer").removeClass('hidden');
-    $(".codebill").addClass('hidden');
-}
+    }
+
+
+    btnCodeBill.onclick = function(){
+        modal_codebill.style.display = "block"; 
+        $(".codebill").removeClass('hidden');
+        $(".customer").addClass('hidden');
+    }
+
+
+    btnCustomer.onclick = function(){
+        modal_codebill.style.display = "block"; 
+        $(".customer").removeClass('hidden');
+        $(".codebill").addClass('hidden');
+    }
 
 // When the user clicks on <span> (x), close the modal
 spancategory.onclick = function(){
@@ -80,12 +84,16 @@ spannewstock.onclick = function(){
     modal_newstock.style.display = "none";
 //$(this).style.display = "none";
 }
+
 spanadduser.onclick = function() {
     modal_adduser.style.display = "none";
 }
-toggle.onclick = function(){
-    modal_codebill.style.display = "none";
-}
+
+
+    toggle.onclick = function(){
+        modal_codebill.style.display = "none";
+    }
+
  spanModif.onclick = function(){
      modif.style.display="none";
     }
@@ -125,6 +133,7 @@ $('.modal-content').resizable({
     });
 //CATEGORY MODIFICATION AJAX
 $(".mytable").on('click','.edit',function(){
+    console.log("yes");
     $("#itemModify").addClass('hidden');
     $("#stockModif").addClass('hidden');
     $("#categoryModify").removeClass('hidden'); 
