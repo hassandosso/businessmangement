@@ -51,7 +51,7 @@ CREATE TABLE `hassan_billcode` (
 
 /*Data for the table `hassan_billcode` */
 
-insert  into `hassan_billcode`(`id`,`code`) values (11,'0011'),(12,'0012'),(13,'0013'),(14,'0014'),(15,'0015'),(16,'0016'),(17,'0017'),(18,'0018'),(19,'0019'),(20,'0020'),(21,'0021'),(22,'0022'),(23,'0023'),(24,'0024'),(25,'0025'),(26,'0026'),(27,'0027'),(28,'0028'),(29,'0029'),(30,'0030'),(31,'0031'),(32,'0032'),(33,'0033'),(34,'0034'),(35,'0035'),(36,'0036'),(37,'0037'),(38,'0038'),(39,'0039'),(40,'0040'),(41,'0041'),(42,'0042'),(43,'0043'),(44,'0044'),(45,'0045'),(46,'0046'),(47,'0047'),(48,'0048'),(49,'0049'),(50,'0050'),(51,'0051'),(52,'0052'),(53,'0053'),(54,'0054'),(55,'0055'),(56,'0056'),(57,'0057'),(58,'0058'),(59,'0059'),(60,'0060'),(61,'0061'),(62,'0062'),(63,'0063'),(64,'0064'),(65,'0065'),(66,'0066'),(67,'0067'),(68,'0068'),(69,'0069'),(70,'0070'),(71,'0071'),(72,'0072'),(73,'0073'),(74,'0074'),(75,'0075'),(76,'0076'),(77,'0077'),(78,'0078'),(79,'0079'),(80,'0080'),(81,'0081'),(82,'0082'),(83,'0083'),(84,'0084'),(85,'0085'),(86,'0086'),(87,'0087'),(88,'0088'),(89,'0089'),(90,'0090'),(91,'0091'),(92,'0092'),(93,'0093'),(94,'0094'),(95,'0095'),(96,'0096'),(97,'0097'),(98,'0098'),(99,'0099'),(100,'0100');
+insert  into `hassan_billcode`(`id`,`code`) values (12,'0012'),(13,'0013'),(14,'0014'),(15,'0015'),(16,'0016'),(17,'0017'),(18,'0018'),(19,'0019'),(20,'0020'),(21,'0021'),(22,'0022'),(23,'0023'),(24,'0024'),(25,'0025'),(26,'0026'),(27,'0027'),(28,'0028'),(29,'0029'),(30,'0030'),(31,'0031'),(32,'0032'),(33,'0033'),(34,'0034'),(35,'0035'),(36,'0036'),(37,'0037'),(38,'0038'),(39,'0039'),(40,'0040'),(41,'0041'),(42,'0042'),(43,'0043'),(44,'0044'),(45,'0045'),(46,'0046'),(47,'0047'),(48,'0048'),(49,'0049'),(50,'0050'),(51,'0051'),(52,'0052'),(53,'0053'),(54,'0054'),(55,'0055'),(56,'0056'),(57,'0057'),(58,'0058'),(59,'0059'),(60,'0060'),(61,'0061'),(62,'0062'),(63,'0063'),(64,'0064'),(65,'0065'),(66,'0066'),(67,'0067'),(68,'0068'),(69,'0069'),(70,'0070'),(71,'0071'),(72,'0072'),(73,'0073'),(74,'0074'),(75,'0075'),(76,'0076'),(77,'0077'),(78,'0078'),(79,'0079'),(80,'0080'),(81,'0081'),(82,'0082'),(83,'0083'),(84,'0084'),(85,'0085'),(86,'0086'),(87,'0087'),(88,'0088'),(89,'0089'),(90,'0090'),(91,'0091'),(92,'0092'),(93,'0093'),(94,'0094'),(95,'0095'),(96,'0096'),(97,'0097'),(98,'0098'),(99,'0099'),(100,'0100');
 
 /*Table structure for table `hassan_billing` */
 
@@ -70,11 +70,11 @@ CREATE TABLE `hassan_billing` (
   `bill_date` date DEFAULT NULL,
   `customer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`,`bill_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `hassan_billing` */
 
-insert  into `hassan_billing`(`id`,`bill_id`,`quantity`,`unit_price`,`total_price`,`tax`,`discount`,`final_price`,`item_name`,`bill_date`,`customer`) values (35,'0010',10,45,450,18,0,468,'Soda can Coke product','2018-06-22','company name / '),(36,'0010',8,65,520,10.4,20.8,509.6,'Apple Sauce','2018-06-22','company name / '),(37,'0010',15,100,1500,30,45,1485,'Tea green  bags','2018-06-22','company name / ');
+insert  into `hassan_billing`(`id`,`bill_id`,`quantity`,`unit_price`,`total_price`,`tax`,`discount`,`final_price`,`item_name`,`bill_date`,`customer`) values (35,'0010',10,45,450,18,0,468,'Soda can Coke product','2018-06-22','company name / '),(36,'0010',8,65,520,10.4,20.8,509.6,'Apple Sauce','2018-06-22','company name / '),(37,'0010',15,100,1500,30,45,1485,'Tea green  bags','2018-06-22','company name / '),(38,'0011',15,105,1575,31.5,15.75,1590.75,'Orange Juice not from concentrate','2018-07-06','Self / Koffi'),(39,'0011',10,25,250,7.5,5,252.5,'Soda bottle Coke product','2018-07-06','Self / Koffi'),(40,'0011',5,155,775,7.75,0,782.75,'Milk','2018-07-06','Self / Koffi'),(41,'0011',3,65,195,5.85,1.95,198.9,'Apple Sauce','2018-07-06','Self / Koffi'),(42,'0011',4,100,400,8,0,408,'Tea green  bags','2018-07-06','Self / Koffi');
 
 /*Table structure for table `hassan_category` */
 
@@ -119,11 +119,11 @@ CREATE TABLE `hassan_flow` (
   `flow_date` date DEFAULT NULL,
   `flow_item_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `hassan_flow` */
 
-insert  into `hassan_flow`(`id`,`stockid`,`flow_date`,`flow_item_number`) values (35,'06/21_sdccopro_33ml','2018-06-22',10),(36,'06/21_appSau','2018-06-22',8),(37,'06/21_teagrbag','2018-06-22',15);
+insert  into `hassan_flow`(`id`,`stockid`,`flow_date`,`flow_item_number`) values (35,'06/21_sdccopro_33ml','2018-06-22',10),(36,'06/21_appSau','2018-06-22',8),(37,'06/21_teagrbag','2018-06-22',15),(38,'06/21_orj_1l','2018-07-06',15),(39,'06/21_sdbtckpro_33ml','2018-07-06',10),(40,'06/21_milkpd_200g','2018-07-06',5),(41,'06/21_appSau','2018-07-06',3),(42,'06/21_teagrbag','2018-07-06',4);
 
 /*Table structure for table `hassan_item` */
 
@@ -176,7 +176,7 @@ CREATE TABLE `hassan_stock` (
 
 /*Data for the table `hassan_stock` */
 
-insert  into `hassan_stock`(`id`,`stock_id`,`item_name`,`initial_number`,`entry_date`,`actual_number`,`out_date`) values (1,'06/21_appJ_33ml','Apple Juice',200,'2018-06-21',200,NULL),(2,'06/21_cofpd','Coffee',150,'2018-06-21',150,NULL),(3,'06/21_milkpd_200g','Milk',250,'2018-06-21',250,NULL),(4,'06/21_orj_1l','Orange Juice not from concentrate',100,'2018-06-21',100,NULL),(5,'06/21_sdbt_33ml','Soda, bottle',125,'2018-06-21',125,NULL),(6,'06/21_sdbtckpro_33ml','Soda bottle Coke product',140,'2018-06-21',140,NULL),(7,'06/21_sdcan_33ml','Soda can',200,'2018-06-21',200,NULL),(8,'06/21_sdccopro_33ml','Soda can Coke product',110,'2018-06-21',100,'2018-06-22'),(9,'06/21_teagrbag','Tea green  bags',75,'2018-06-21',60,'2018-06-22'),(10,'06/21_watreg/dri_1l','Water regular/drinking',132,'2018-06-21',132,NULL),(11,'06/21_appSau','Apple Sauce',85,'2018-06-21',77,'2018-06-22');
+insert  into `hassan_stock`(`id`,`stock_id`,`item_name`,`initial_number`,`entry_date`,`actual_number`,`out_date`) values (1,'06/21_appJ_33ml','Apple Juice',200,'2018-06-21',200,NULL),(2,'06/21_cofpd','Coffee',150,'2018-06-21',150,NULL),(3,'06/21_milkpd_200g','Milk',250,'2018-06-21',245,'2018-07-06'),(4,'06/21_orj_1l','Orange Juice not from concentrate',100,'2018-06-21',85,'2018-07-06'),(5,'06/21_sdbt_33ml','Soda, bottle',125,'2018-06-21',125,NULL),(6,'06/21_sdbtckpro_33ml','Soda bottle Coke product',140,'2018-06-21',130,'2018-07-06'),(7,'06/21_sdcan_33ml','Soda can',200,'2018-06-21',200,NULL),(8,'06/21_sdccopro_33ml','Soda can Coke product',110,'2018-06-21',100,'2018-06-22'),(9,'06/21_teagrbag','Tea green  bags',75,'2018-06-21',56,'2018-07-06'),(10,'06/21_watreg/dri_1l','Water regular/drinking',132,'2018-06-21',132,NULL),(11,'06/21_appSau','Apple Sauce',85,'2018-06-21',74,'2018-07-06');
 
 /*Table structure for table `hassan_useraccount` */
 
