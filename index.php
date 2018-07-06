@@ -131,6 +131,7 @@
        <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
        <script src='dist/jspdf.min.js'></script>
+       <script src="JavaScript/table2excel.js"></script>
         <script src="JavaScript/loginpage.js"></script>
         <script src="JavaScript/CategoryList.js"></script>
         <script src="JavaScript/ItemList.js"></script> 
@@ -140,4 +141,5 @@
         <script src="JavaScript/note.js"></script>
          <script src="JavaScript/onlineScript/googleCharts.js"></script>
          <script src="JavaScript/charts.js"></script>
+         <script src="JavaScript/exportExcel.js"></script>
 </html>

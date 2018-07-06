@@ -3,7 +3,8 @@ $(document).ready(function(){
 var tableDesign = "<div id='content'>\n\
 <input type='text' class='myInput-account' placeholder='Search by bill no..' style='margin-bottom: 5px;'>\n\
 <span class='btn btn-info search'style='margin-bottom: 5px;'><i class='fa fa-search'></i>Search</span>\n\
-<input type='date' class='date-bill' style='margin-bottom: 5px; margin-left:15px; float: right'>\n\
+<input type='date' class='date-bill' style='margin-bottom: 5px; margin-left:15px; float:'>\n\
+<button class='btn btn-primary' id='export' style='margin-bottom: 5px; float: right'>Excel</button>\n\
 <table width='100%' id='account_table' class='table table-striped table-bordered' style='width:100%;'>\n\
     <thead style='color: #222; background-color: #d9534f'>\n\
         <tr>\n\
@@ -19,13 +20,13 @@ var tableDesign = "<div id='content'>\n\
     <tbody id='tbody_account'></tbody>\n\
     <tfoot>\n\
         <tr class='success'>\n\
-            <th>Bill id</th>\n\
-            <th>Sub amount</th>\n\
-            <th>Tax</th>\n\
-            <th>Discount</th>\n\
-            <th>Total amount</th>\n\
-            <th>Items</th>\n\
-            <th>Date</th>\n\
+            <th>Totals:</th>\n\
+            <th class='subamount'>Sub amount</th>\n\
+            <th class='alltax'>Tax</th>\n\
+            <th class='alldisc'>Discount</th>\n\
+            <th class='totalAmount'></th>\n\
+            <th></th>\n\
+            <th></th>\n\
         </tr>\n\
     </tfoot>\n\
 </table>\n\
@@ -59,6 +60,7 @@ $("#soldDetails").click(function(){
                 var response = [];
                 var bill_info = myresponse[0];
                 var bill_item = myresponse[1];
+               var totalDiscount = 0, totaltax = 0, subAmount = 0, totalAmount= 0;
 
                 console.log(bill_info);
                 console.log(bill_item);
@@ -66,9 +68,13 @@ $("#soldDetails").click(function(){
                 var arrayelement={};
                 arrayelement['billNo'] = bill_info[i]['billNo'];
                 arrayelement['subAmount'] = bill_info[i]['subAmount'];
+                subAmount = parseFloat(bill_info[i]['subAmount'],10)+parseFloat(subAmount,10);
                  arrayelement['tax'] = bill_info[i]['tax'];
+                 totaltax = parseFloat(bill_info[i]['tax'],10)+parseFloat(totaltax,10);
                 arrayelement['discount'] = bill_info[i]['discount'];
+                totalDiscount = parseFloat(bill_info[i]['discount'],10)+parseFloat(totalDiscount,10);
                 arrayelement['totalAmount'] = bill_info[i]['totalAmount'];
+                totalAmount = parseFloat(bill_info[i]['totalAmount'],10)+parseFloat(totalAmount,10);
 
                 var item ='';
                 for(var j=0; j<bill_item.length; j++){
@@ -89,6 +95,11 @@ $("#soldDetails").click(function(){
                 response.push(arrayelement);
             
         }
+                $('.mytable  .subamount').text(totalAmount);
+                $('.mytable  .alltax').text(totaltax);
+                $('.mytable  .alldisc').text(totalDiscount);
+                $('.mytable  .totalAmount').text(totalAmount);
+        
                if(response===''){
                     $("#tbody_account").append("<p style='text-align:center'><strong>item Table is empty!</strong></p>");
                 }else{
@@ -134,7 +145,6 @@ $(".mytable").on('click','#but_next_account',function(){
             }
         searchTablerow(searchdata, lastline,start, filter, filter_criteria);
        }
-            
             });
      //END ACTION NEXT BUTTON
 //ACTION WHEN PREVIOUS BUTTON IS CLICKED
@@ -322,12 +332,9 @@ function createTablerow(data, perpage,start){
      }
  }
  }
+ 
+ 
 });
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
